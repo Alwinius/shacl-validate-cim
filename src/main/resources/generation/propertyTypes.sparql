@@ -1,0 +1,21 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+
+SELECT distinct ?propertyName ?cimsPrimitive
+WHERE {
+    {
+        ?s rdfs:domain/rdfs:label ?domainName ;
+            rdfs:label ?elementName ;
+            cims:dataType/cims:stereotype "Primitive" ;
+            cims:dataType/rdfs:label ?primitiveType .
+    } UNION {
+        ?s rdfs:domain/rdfs:label ?domainName ;
+            rdfs:label ?elementName ;
+            cims:dataType ?dataType .
+        ?dataType cims:stereotype "CIMDatatype" .
+        ?cimsDataTypeValue rdfs:domain ?dataType ;
+            cims:dataType/rdfs:label ?primitiveType .
+    }
+    BIND( CONCAT( STR( ?domainName ), ".", STR( ?elementName ) ) AS ?propertyName )
+    BIND( STR( ?primitiveType ) AS ?cimsPrimitive )
+}
