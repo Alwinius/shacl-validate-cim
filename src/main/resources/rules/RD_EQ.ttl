@@ -1,0 +1,92 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xs:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+
+cim:RedispatchableResource_Shape
+    a                    sh:NodeShape ;
+    sh:closed            false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:path     cim:RedispatchableResource.grossNominalP ] ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:IdentifiedObject.name ] ;
+    sh:property          [ sh:maxCount 1 ;
+                           sh:nodeKind sh:IRI ;
+                           sh:path     cim:RedispatchableResource.storage ;
+                           sh:class    cim:Storage ] ;
+    sh:property          [ sh:maxCount 1 ;
+                           sh:nodeKind sh:IRI ;
+                           sh:path     cim:RedispatchableResource.generatingUnit ;
+                           sh:class    cim:GeneratingUnit ] ;
+    sh:xone ( # exactly one storage or generatingUnit
+            [
+                sh:property  [
+                                sh:path cim:RedispatchableResource.storage ;
+                                sh:minCount  1 ;
+                                sh:maxCount 1 ;
+                             ] ;
+            ]
+            [
+                sh:property [
+                                sh:path cim:RedispatchableResource.generatingUnit ;
+                                sh:minCount 1 ;
+                                sh:maxCount 1 ;
+                            ]
+            ]
+          );
+    sh:targetClass       cim:RedispatchableResource .
+
+cim:Storage_Shape
+    a                    sh:NodeShape ;
+    sh:closed            false ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:path     <http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName> ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.netBottleneckPConsumption ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.netNominalPConsumption ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.efficiency ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.maxPStore ] ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:IdentifiedObject.name ] ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:path     cim:IdentifiedObject.mRID ] ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:path     <http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic> ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.maxPDischarge ] ;
+    sh:property          [ sh:datatype xs:string ;
+                           sh:maxCount 1 ;
+                           sh:path     cim:IdentifiedObject.description ] ;
+    sh:property          [ sh:maxCount 1 ;
+                           sh:nodeKind sh:IRI ;
+                           sh:path     cim:Storage.redispatchableResource ] ;
+    sh:property          [ sh:datatype xs:double ;
+                           sh:maxCount 1 ;
+                           sh:minCount 1 ;
+                           sh:path     cim:Storage.usableEnergyContent ] ;
+    sh:targetClass       cim:Storage .

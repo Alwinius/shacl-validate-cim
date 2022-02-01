@@ -4,17 +4,21 @@ import de.boeg.rdf.cim.registers.ExampleDataRegister;
 import de.boeg.rdf.cim.typed.RDFS2DatatypeMapGenerator;
 import de.boeg.rdf.cim.typed.TypedStreamRDF;
 import de.boeg.rdf.cim.validate.parser.CIMRDFS2SHACL;
+import de.boeg.rdf.cim.validate.parser.ShaclReader;
 import lombok.extern.java.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.graph.Node;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
 import org.apache.jena.shacl.ShaclValidator;
 import org.apache.jena.shacl.Shapes;
 import org.apache.jena.shacl.ValidationReport;
 import org.apache.jena.shacl.validation.ReportEntry;
 import org.apache.jena.sparql.graph.GraphFactory;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -23,7 +27,7 @@ import java.util.stream.Collectors;
 import static java.lang.String.*;
 
 @Log
-public class ShaclValidataionExample {
+public class ShaclValidationExample {
 
     private static final RunConfig current = RunConfig.SUMMARY;
 
@@ -36,17 +40,18 @@ public class ShaclValidataionExample {
                                                              + "\t#   violation count: %d\n"
                                                              + "\t#   took: %d ms\n"
                                                              + "\t##################################################\n";
-    ;
+
 
     public static void main(String[] args) throws IOException {
-        var underTest = ExampleDataRegister.MINIGRID_EQ;
+        var underTest = ExampleDataRegister.MINIGRID_RD_EQ;
 
         // setup type mapping
         var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(underTest.rdfs.path);
 
         // setup shapes
-        var shapes = CIMRDFS2SHACL.generate(underTest.rdfs.path, typeMap);
-
+       // var shapes = CIMRDFS2SHACL.generate(underTest.rdfs.path, typeMap);
+        var shapes = ShaclReader.readFromFile("rules/RD_EQ.ttl");
+        RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapes.getGraph()), RDFFormat.TURTLE_PRETTY);
         doBenchmark(typeMap, shapes, underTest.path);
     }
 

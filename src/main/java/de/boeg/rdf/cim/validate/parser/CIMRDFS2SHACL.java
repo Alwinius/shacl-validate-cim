@@ -76,6 +76,7 @@ public class CIMRDFS2SHACL {
                     shapeTriples.add(new Triple(propertyUri, SHACL.datatype, NodeFactory.createURI(xsdDataType.getURI())));
                 } else if (propertyRange != null) {
                     shapeTriples.add(new Triple(propertyUri, SHACL.nodeKind, SHACL.IRI));
+                    shapeTriples.add(new Triple(propertyUri, SHACL.class_, propertyRange.asNode()));
                 }
 
                 shapeTriples.addAll(getMultiplicityTriple(propertyUri, propertyMultiplicity));
