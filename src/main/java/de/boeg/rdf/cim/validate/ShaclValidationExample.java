@@ -41,7 +41,6 @@ public class ShaclValidationExample {
                                                              + "\t#   took: %d ms\n"
                                                              + "\t##################################################\n";
 
-
     public static void main(String[] args) throws IOException {
         var underTest = ExampleDataRegister.MINIGRID_RD_EQ;
 
@@ -49,10 +48,12 @@ public class ShaclValidationExample {
         var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(underTest.rdfs.path);
 
         // setup shapes
-       // var shapes = CIMRDFS2SHACL.generate(underTest.rdfs.path, typeMap);
-        var shapes = ShaclReader.readFromFile("rules/RD_EQ.ttl");
-        RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapes.getGraph()), RDFFormat.TURTLE_PRETTY);
-        doBenchmark(typeMap, shapes, underTest.path);
+        var shapesGenerated = CIMRDFS2SHACL.generate(underTest.rdfs.path, typeMap);
+        var shapesManual = ShaclReader.readFromFile("rules/RD_EQ.ttl");
+
+        RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGenerated.getGraph()), RDFFormat.TURTLE_PRETTY);
+        doBenchmark(typeMap, shapesManual, underTest.path);
+        doBenchmark(typeMap, shapesGenerated, underTest.path);
     }
 
     private static void doBenchmark(Map<Node, XSDDatatype> typeMap, Shapes shapes, String dataFile) {

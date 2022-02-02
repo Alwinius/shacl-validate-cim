@@ -3,12 +3,18 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
 
-SELECT ?property ?range ?dataType ?multiplicity
+SELECT ?property ?multiplicity ?range ?dataType (GROUP_CONCAT(?child;SEPARATOR=", ") as ?children)
 WHERE {
+    FILTER( !BOUND(?used) || sameTerm(?used, "Yes") ) # check whether the attribute is marked as used
 	?parameter rdfs:subClassOf* ?class.
 	?property rdfs:domain ?class.
-	optional{ ?property rdfs:range ?range.}
+	optional{ ?property rdfs:range ?range .
+	        ?range ^rdfs:subClassOf* ?child.
+	        }
 	optional{ ?property cims:multiplicity ?multiplicity.}
 	optional{ ?property cims:dataType ?dataType.}
+    optional{ ?property cims:AssociationUsed ?used } .
+
 }
+GROUP BY ?property ?multiplicity ?range ?dataType
 ORDER BY ?class

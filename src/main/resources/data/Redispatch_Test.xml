@@ -15,11 +15,12 @@
         <md:Model.scenarioTime>2030-01-02T09:00:00</md:Model.scenarioTime>
         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
     </md:FullModel>
-    <cim:RedispatchableResource rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#_8372a156-7579-4ea5-8793-24caf0d24603">
+    <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
 <!--        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>-->
         <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
         <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
         <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
@@ -33,4 +34,8 @@
     <cim:GeneratingUnit rdf:ID="_123abc">
         <cim:IdentifiedObject.name>GenUnit</cim:IdentifiedObject.name>
     </cim:GeneratingUnit>
+    <cim:ControllableResource rdf:ID="_controller">
+        <cim:IdentifiedObject.name>Controller</cim:IdentifiedObject.name>
+        <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
+    </cim:ControllableResource>
 </rdf:RDF>

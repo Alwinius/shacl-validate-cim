@@ -41,7 +41,9 @@ public class CIMRDFS2SHACL {
 
         //create empty jena shape graph
         var shapeGraph = GraphFactory.createDefaultGraph();
-        shapeGraph.getPrefixMapping().setNsPrefix("sh", SHACL.getURI());
+        shapeGraph.getPrefixMapping().setNsPrefix("sh", SHACL.getURI())
+                  .setNsPrefix("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+                  .setNsPrefix("cim", "http://iec.ch/TC57/2013/CIM-schema-cim16#");
 
         // create shape property triple for all queried typenames
         for (Node type : typenames) {
@@ -75,8 +77,27 @@ public class CIMRDFS2SHACL {
                     var xsdDataType = typeMap.getOrDefault(typeProperty, XSDDatatype.XSDstring);
                     shapeTriples.add(new Triple(propertyUri, SHACL.datatype, NodeFactory.createURI(xsdDataType.getURI())));
                 } else if (propertyRange != null) {
+                    var referenceTarget = typePropertyRow.get("children").asLiteral();
+                    var targets = referenceTarget.getString().split(", ");
+
+                    if (targets.length > 1) {
+                        var currentListHead = NodeFactory.createBlankNode();
+                        var firstTriple = new Triple(propertyUri, SHACL.or, currentListHead);
+                        for ( var child : targets) {
+                            shapeTriples.add(firstTriple);
+                            var childElement = NodeFactory.createBlankNode();
+                            shapeTriples.add(new Triple(currentListHead, RDF.first.asNode(), childElement));
+                            shapeTriples.add(new Triple(childElement, SHACL.class_, NodeFactory.createURI(child)));
+                            var nextListElement = NodeFactory.createBlankNode();
+                            firstTriple = new Triple(currentListHead, RDF.rest.asNode(), nextListElement);
+                            currentListHead = nextListElement;
+                        }
+                        shapeTriples.add(new Triple(firstTriple.getSubject(), RDF.rest.asNode(), RDF.nil.asNode()));
+                    } else {
+                        shapeTriples.add(new Triple(propertyUri, SHACL.class_, propertyRange.asNode()));
+                    }
+
                     shapeTriples.add(new Triple(propertyUri, SHACL.nodeKind, SHACL.IRI));
-                    shapeTriples.add(new Triple(propertyUri, SHACL.class_, propertyRange.asNode()));
                 }
 
                 shapeTriples.addAll(getMultiplicityTriple(propertyUri, propertyMultiplicity));
