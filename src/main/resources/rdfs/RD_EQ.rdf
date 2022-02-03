@@ -143,6 +143,15 @@
     <rdfs:label xml:lang="en">netNominalPProduction</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
   </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.increments">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.controllability"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
+    <rdfs:label xml:lang="en">increments</rdfs:label>
+  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability">
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
     <rdfs:label xml:lang="en">Controllability</rdfs:label>
@@ -220,6 +229,14 @@
     <rdfs:comment rdf:parseType="Literal">Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
     <rdfs:label xml:lang="en">Date</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.max">
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
+    <rdfs:label xml:lang="en">max</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.controllability">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <cims:AssociationUsed>No</cims:AssociationUsed>
@@ -236,7 +253,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.step">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
+    <cims:AssociationUsed>No</cims:AssociationUsed>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
     <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step.stepsList"/>
     <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step"/>
@@ -256,14 +273,6 @@
     <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
     <rdfs:comment rdf:parseType="Literal">Giga 10**9.</rdfs:comment>
     <rdfs:label xml:lang="en">G</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#increments.max">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments"/>
-    <rdfs:label xml:lang="en">max</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.description">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -376,7 +385,7 @@ References:
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Step.stepsList">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <cims:AssociationUsed>Yes</cims:AssociationUsed>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
     <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.step"/>
     <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList"/>
@@ -408,13 +417,6 @@ References:
     <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
     <rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#increments">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">increments</rdfs:label>
-  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent.value">
     <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -440,6 +442,13 @@ References:
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core">
     <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
     <rdfs:label xml:lang="en">Core</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments">
+    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
+    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
+    <rdfs:label xml:lang="en">Increments</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit.redispatchableResource">
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
@@ -556,6 +565,14 @@ References:
     <rdfs:comment rdf:parseType="Literal">No multiplier or equivalently multiply by 1.</rdfs:comment>
     <rdfs:label xml:lang="en">none</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.min">
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
+    <rdfs:label xml:lang="en">min</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent.unit">
     <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
@@ -606,6 +623,14 @@ References:
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
     <rdfs:label xml:lang="en">maxPDischarge</rdfs:label>
+    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.width">
+    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
+    <rdfs:label xml:lang="en">width</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_RedispatchEquipmentProfile">
@@ -695,15 +720,6 @@ Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comme
     <rdfs:comment rdf:parseType="Literal">A floating point number. The range is unspecified and not limited.</rdfs:comment>
     <rdfs:label xml:lang="en">Float</rdfs:label>
   </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#increments.controllability">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.incrementPower"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments"/>
-    <rdfs:label xml:lang="en">controllability</rdfs:label>
-  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minTStartupWarm">
     <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
@@ -719,6 +735,15 @@ Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comme
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.controllability">
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+    <cims:AssociationUsed>No</cims:AssociationUsed>
+    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.increments"/>
+    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
+    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
+    <rdfs:label xml:lang="en">controllability</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource">
     <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
@@ -888,15 +913,6 @@ Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comme
     <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
     <cims:isFixed>m</cims:isFixed>
   </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.incrementPower">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments.controllability"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:label xml:lang="en">incrementPower</rdfs:label>
-  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr">
     <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
     <rdfs:comment rdf:parseType="Literal">Reactive power in volt ampere reactive.</rdfs:comment>
@@ -1014,28 +1030,12 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the m
     <rdfs:label xml:lang="en">mRID</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#increments.width">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments"/>
-    <rdfs:label xml:lang="en">width</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.timeToRealisation">
     <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
     <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
     <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
     <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
     <rdfs:label xml:lang="en">timeToRealisation</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#increments.min">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#increments"/>
-    <rdfs:label xml:lang="en">min</rdfs:label>
     <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.maxGradientPlus">

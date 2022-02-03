@@ -19,6 +19,15 @@
 <!--        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>-->
         <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
+        <cim:RedispatchableResource.netBottleneckPProduction>345</cim:RedispatchableResource.netBottleneckPProduction>
+        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
+    </cim:RedispatchableResource>
+    <cim:RedispatchableResource rdf:ID="_otherTR">
+        <!--        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>-->
+        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>
+        <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
+        <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
@@ -37,5 +46,34 @@
     <cim:ControllableResource rdf:ID="_controller">
         <cim:IdentifiedObject.name>Controller</cim:IdentifiedObject.name>
         <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
+        <cim:ControllableResource.controlArea rdf:resource="#_ControlArea"/>
+        <cim:ControllableResource.controllability rdf:resource="#_Controllability"/>
     </cim:ControllableResource>
+    <cim:ControlArea rdf:ID="_ControlArea">
+        <cim:IdentifiedObject.name>ControlArea 1</cim:IdentifiedObject.name>
+    </cim:ControlArea>
+    <cim:Controllability rdf:ID="_Controllability">
+        <cim:IdentifiedObject.name>Controllability 1</cim:IdentifiedObject.name>
+        <cim:Controllability.increments rdf:resource="#_Increments1"/>
+<!--        <cim:Controllability.stepsList rdf:resource="#_StepsList1"/>-->
+    </cim:Controllability>
+    <cim:Increments rdf:ID="_Increments1">
+        <cim:IdentifiedObject.name>Increments 1</cim:IdentifiedObject.name>
+        <cim:Increments.min>24</cim:Increments.min>
+        <cim:Increments.max>250</cim:Increments.max>
+        <cim:Increments.width>0.1</cim:Increments.width>
+    </cim:Increments>
+<!--    <cim:StepsList rdf:ID="_StepsList1">-->
+<!--        <cim:IdentifiedObject.name>Stepslist 1</cim:IdentifiedObject.name>-->
+<!--    </cim:StepsList>-->
+<!--    <cim:Step rdf:ID="_Step1">-->
+<!--        <cim:IdentifiedObject.name>Step1</cim:IdentifiedObject.name>-->
+<!--        <cim:Step.p>123</cim:Step.p>-->
+<!--        <cim:Step.stepsList rdf:resource="#_StepsList1"/>-->
+<!--    </cim:Step>-->
+<!--    <cim:Step rdf:ID="_Step2">-->
+<!--        <cim:IdentifiedObject.name>Step2</cim:IdentifiedObject.name>-->
+<!--        <cim:Step.p>0</cim:Step.p>-->
+<!--        <cim:Step.stepsList rdf:resource="#_StepsList1"/>-->
+<!--    </cim:Step>-->
 </rdf:RDF>

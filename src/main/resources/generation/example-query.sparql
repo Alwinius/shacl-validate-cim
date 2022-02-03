@@ -1,0 +1,11 @@
+PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+
+SELECT ?incProduction (sum(?componentProduction) as ?value) WHERE {
+ <#_Increments1> ^cim:Controllability.increments/
+             ^cim:ControllableResource.controllability/
+             ^cim:RedispatchableResource.controllableResource/
+              cim:RedispatchableResource.netBottleneckPProduction ?componentProduction .
+ <#_Increments1> cim:Increments.max ?incProduction .
+}
+GROUP BY ?incProduction
+HAVING (sum(?componentProduction) < ?incProduction)

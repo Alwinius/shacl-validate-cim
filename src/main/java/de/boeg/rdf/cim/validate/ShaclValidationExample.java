@@ -72,8 +72,8 @@ public class ShaclValidationExample {
         long toc = System.currentTimeMillis();
 
         // result
-        log.info("file, triple, violations, time");
         if (current.isMeasurement) {
+            log.info("file, triple, violations, time");
             log.info(format("%s,%d,%d,%d",
                             dataFile,
                             dataGraph.size(),
@@ -94,8 +94,9 @@ public class ShaclValidationExample {
             }
 
             if (current.SHOW_SUMMARY) {
-                log.info("Summary:");
-                printReportSummary(report);
+                RDFDataMgr.write(System.out, report.getModel(), Lang.TTL);
+//                log.info("Summary:");
+//                printReportSummary(report);
             }
         }
     }

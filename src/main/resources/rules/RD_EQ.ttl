@@ -25,3 +25,83 @@ cim:ControllableResource_manual_Shape
                      sh:path        [ sh:inversePath cim:RedispatchableResource.controllableResource ] ;
                      sh:minCount    1 ; ] .
 
+cim:Controllability_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:Controllability ;
+    sh:description "There must be exactly one StepsList or Increments attached to every Controllability" ;
+    sh:xone        ( [ sh:property [ sh:path     cim:Controllability.stepsList ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ; ] ; ]
+                     [ sh:property [ sh:path     cim:Controllability.increments ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ; ] ] ) .
+
+cim:Increments_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:Increments ;
+    sh:property    [ sh:description "Every Increments needs to be connected to exactly one Controllability" ;
+                     sh:path        [ sh:inversePath cim:Controllability.increments ] ;
+                     sh:minCount    1 ;
+                     sh:maxCount    1 ] ;
+    sh:property    [ sh:description "The maximum of every Increments needs to be larger than the minimum" ;
+                     sh:path        cim:Increments.min ;
+                     sh:lessThan    cim:Increments.max ] ;
+    sh:property    [ sh:description  "The width of every Increments must be larger than zero" ;
+                     sh:path         cim:Increments.width ;
+                     sh:minExclusive 0 ] ;
+    sh:sparql      [ sh:description "width of Increments must be at most the distance between min and max" ;
+                     sh:select      """
+                         PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                                                SELECT ?value WHERE {
+                            $this cim:Increments.max ?max ;
+                                  cim:Increments.min ?min ;
+                                  cim:Increments.width ?width .
+                            BIND(?max - ?min - ?width AS ?value).
+                            FILTER( ?value < 0 )
+                          }
+                          """ ] ;
+    sh:sparql      [ sh:description "max (and min) should be smaller or equal to the sum of netBottleneckPProduction of all connected RedispatchableResources" ;
+                         sh:select      """
+                                PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                                SELECT ?incProduction (sum(?componentProduction) as ?value) WHERE {
+                                 $this ^cim:Controllability.increments/
+                                             ^cim:ControllableResource.controllability/
+                                             ^cim:RedispatchableResource.controllableResource/
+                                              cim:RedispatchableResource.netBottleneckPProduction ?componentProduction .
+                                 $this cim:Increments.max ?incProduction .
+                                }
+                                GROUP BY $this ?incProduction
+                                HAVING (sum(?componentProduction) < ?incProduction)
+                                  """ ] .
+
+cim:StepsList_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:StepsList ;
+    sh:property    [ sh:description "Every StepsList needs to be connected to at least 2 Steps" ;
+                     sh:path        [ sh:inversePath cim:Step.stepsList ] ;
+                     sh:minCount    2 ] .
+
+cim:Step_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:Step ;
+    sh:property    [ sh:description  "Power of every Step needs to zero or larger" ;
+                     sh:path         cim:Step.p ;
+                     sh:minInclusive 0 ; ] ;
+    sh:sparql      [ sh:description "p should be smaller or equal to the sum of netBottleneckPProduction of all connected RedispatchableResources" ;
+                     sh:select      """
+                            PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                            SELECT ?stepProduction (sum(?componentProduction) as ?value) WHERE {
+                             $this cim:Step.stepsList/
+                                         ^cim:Controllability.stepsList/
+                                         ^cim:ControllableResource.controllability/
+                                         ^cim:RedispatchableResource.controllableResource/
+                                          cim:RedispatchableResource.netBottleneckPProduction ?componentProduction .
+                             $this cim:Step.p ?stepProduction .
+                            }
+                            GROUP BY $this ?stepProduction
+                            HAVING (sum(?componentProduction) < ?stepProduction)
+                              """ ] .

@@ -129,6 +129,7 @@ public class CIMRDFS2SHACL {
             case "0..1":
                 return List.of(new Triple(uri, SHACL.maxCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)));
             case "1..1":
+            case "1":
                 return List.of(new Triple(uri, SHACL.minCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)),
                 new Triple(uri, SHACL.maxCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)));
             case "1..n":
