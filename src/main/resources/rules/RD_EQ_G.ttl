@@ -1,0 +1,26 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xs:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+
+cim:AffectedGridOperatorsList_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:AffectedGridOperatorsList ;
+    sh:property    [ sh:message  "At least one grid operator needs to be connected to every AffectedGridOperatorsList" ;
+                     sh:path     [ sh:inversePath cim:GridOperatorsListEntry.affectedGridOperatorsList ] ;
+                     sh:minCount 1 ; ] .
+
+cim:GridOperatorsListEntry_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:GridOperatorsListEntry ;
+    sh:message     "A GridOperatorsListEntry needs to be connected to exactly one GridOperatorsList" ;
+    sh:xone        ( [ sh:property [ sh:path     cim:GridOperatorsListEntry.affectedGridOperatorsList ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ; ] ; ]
+                     [ sh:property [ sh:path     cim:GridOperatorsListEntry.addtlAffectedGridOperatorsList ;
+                                     sh:minCount 1 ;
+                                     sh:maxCount 1 ; ] ] ) .

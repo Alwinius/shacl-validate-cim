@@ -16,16 +16,16 @@
         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
     </md:FullModel>
     <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
-<!--        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>-->
-        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>
+        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
+<!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>345</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
-        <!--        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>-->
-        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>
+                <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
+<!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>

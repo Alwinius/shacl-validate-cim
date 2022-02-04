@@ -2,19 +2,25 @@ PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
 
-SELECT ?property ?multiplicity ?range ?dataType (GROUP_CONCAT(?child;SEPARATOR=", ") as ?children)
+SELECT ?property ?multiplicity ?range ?stereotype ?dataType ?used ?inverseRole (GROUP_CONCAT(?child;SEPARATOR=", ") as ?children)
 WHERE {
-    FILTER( !BOUND(?used) || sameTerm(?used, "Yes") ) # check whether the attribute is marked as used
 	?parameter rdfs:subClassOf* ?class.
 	?property rdfs:domain ?class.
 	optional{ ?property rdfs:range ?range .
 	        ?range ^rdfs:subClassOf* ?child.
+	        optional { # optional because abstract classes do not have a stereotype
+                    VALUES(?stereotype) {(uml:concrete) (uml:enumeration)} # consider only relevant stereo types
+                    ?range cims:stereotype ?stereotype.
+                }
 	        }
+
 	optional{ ?property cims:multiplicity ?multiplicity.}
 	optional{ ?property cims:dataType ?dataType.}
-    optional{ ?property cims:AssociationUsed ?used } .
+	optional{ ?property cims:inverseRoleName ?inverseRole .}
+    optional{ ?property cims:AssociationUsed ?used .} .
 
 }
-GROUP BY ?property ?multiplicity ?range ?dataType
+GROUP BY ?property ?multiplicity ?range ?dataType ?stereotype ?used ?inverseRole
 ORDER BY ?class

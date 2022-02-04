@@ -11,7 +11,8 @@ public enum RDFSRegister {
     GL("rdfs/GeographicalLocationProfileRDFSAugmented-v2_4_15-16Feb2016.rdf"),
     SSH("rdfs/SteadyStateHypothesisProfileRDFSAugmented-v2_4_15-16Feb2016.rdf"),
     TP("rdfs/TopologyProfileRDFSAugmented-v2_4_15-16Feb2016.rdf"),
-    RD_EQ("rdfs/RD_EQ.rdf");
+    RD_EQ("rdfs/RD_EQ.rdf"),
+    RD_EQ_G("rdfs/RD_EQ_G.rdf");
 
     public final String path;
 }

@@ -8,6 +8,7 @@ import org.apache.jena.graph.NodeFactory;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
@@ -71,19 +72,28 @@ public class CIMRDFS2SHACL {
 
                 var propertyUri = NodeFactory.createBlankNode();
                 shapeTriples.add(new Triple(shapeNode, SHACL.property, propertyUri));
-                shapeTriples.add(new Triple(propertyUri, SHACL.path, typeProperty));
+                if (isInverseReference(typePropertyRow)) {
+                    var tmp = NodeFactory.createBlankNode();
+                    var inverseRole = typePropertyRow.get("inverseRole").asNode();
+                    shapeTriples.add(new Triple(propertyUri, SHACL.path, tmp));
+                    shapeTriples.add(new Triple(tmp, SHACL.inversePath, inverseRole));
+                } else {
+                    shapeTriples.add(new Triple(propertyUri, SHACL.path, typeProperty));
+                }
 
                 if (propertyDataType != null) {
                     var xsdDataType = typeMap.getOrDefault(typeProperty, XSDDatatype.XSDstring);
                     shapeTriples.add(new Triple(propertyUri, SHACL.datatype, NodeFactory.createURI(xsdDataType.getURI())));
-                } else if (propertyRange != null) {
-                    var referenceTarget = typePropertyRow.get("children").asLiteral();
+                } else if (propertyRange != null && !isEnumeration(typePropertyRow)) {
+
+
+                    var referenceTarget = typePropertyRow.getLiteral("children");
                     var targets = referenceTarget.getString().split(", ");
 
                     if (targets.length > 1) {
                         var currentListHead = NodeFactory.createBlankNode();
                         var firstTriple = new Triple(propertyUri, SHACL.or, currentListHead);
-                        for ( var child : targets) {
+                        for (var child : targets) {
                             shapeTriples.add(firstTriple);
                             var childElement = NodeFactory.createBlankNode();
                             shapeTriples.add(new Triple(currentListHead, RDF.first.asNode(), childElement));
@@ -105,6 +115,14 @@ public class CIMRDFS2SHACL {
         }
 
         return shapeTriples;
+    }
+
+    private static boolean isEnumeration(QuerySolution qs) {
+        return qs.contains("stereotype") && qs.getResource("stereotype").getLocalName().equals("enumeration");
+    }
+
+    private static boolean isInverseReference(QuerySolution qs) {
+        return qs.contains("used") && qs.getLiteral("used").getString().equals("No");
     }
 
     private List<Triple> generateNodeShape(Node shapeNode, Node targetClass) {
@@ -131,7 +149,7 @@ public class CIMRDFS2SHACL {
             case "1..1":
             case "1":
                 return List.of(new Triple(uri, SHACL.minCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)),
-                new Triple(uri, SHACL.maxCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)));
+                               new Triple(uri, SHACL.maxCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)));
             case "1..n":
                 return List.of(new Triple(uri, SHACL.minCount, NodeFactory.createLiteral("1", XSDDatatype.XSDinteger)));
             default:

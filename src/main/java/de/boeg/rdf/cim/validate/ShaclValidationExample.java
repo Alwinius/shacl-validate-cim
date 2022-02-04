@@ -42,14 +42,14 @@ public class ShaclValidationExample {
                                                              + "\t##################################################\n";
 
     public static void main(String[] args) throws IOException {
-        var underTest = ExampleDataRegister.MINIGRID_RD_EQ;
+        var underTest = ExampleDataRegister.MINIGRID_RD_EQ_G;
 
         // setup type mapping
         var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(underTest.rdfs.path);
 
         // setup shapes
         var shapesGenerated = CIMRDFS2SHACL.generate(underTest.rdfs.path, typeMap);
-        var shapesManual = ShaclReader.readFromFile("rules/RD_EQ.ttl");
+        var shapesManual = ShaclReader.readFromFile("rules/RD_EQ_G.ttl");
 
         RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGenerated.getGraph()), RDFFormat.TURTLE_PRETTY);
         doBenchmark(typeMap, shapesManual, underTest.path);

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#">
+    <md:FullModel rdf:about="urn:uuid:2e99cbd2-9a39-11e0-aa80-0800200c9a66">
+        <md:Model.profile>http://entsoe.eu/CIM/EquipmentShortCircuit/3/1</md:Model.profile>
+        <md:Model.modelingAuthoritySet>http://tscnet.eu/EMF</md:Model.modelingAuthoritySet>
+        <md:Model.Supersedes rdf:resource="urn:uuid:2399cbd2-9a39-11e0-aa80-0800200c9a66_EU"/>
+        <md:Model.created>2015-02-05T12:20:50.830</md:Model.created>
+        <md:Model.DependentOn rdf:resource="urn:uuid:2399cbd0-9a39-11e0-aa80-0800200c9a66"/>
+        <md:Model.description>CGMES Conformity Assessment: Mini Grid Type 1 Test Configuration. The model is owned by ENTSO-E and is provided by ENTSO-E "as it is". To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.</md:Model.description>
+        <md:Model.version>0</md:Model.version>
+        <md:Model.scenarioTime>2030-01-02T09:00:00</md:Model.scenarioTime>
+        <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
+    </md:FullModel>
+    <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
+        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
+        <!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
+        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
+        <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.SPITZ"/>
+        <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
+    </cim:RedispatchableResource>
+    <cim:RedispatchableResource rdf:ID="_otherTR">
+        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
+        <!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
+        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
+        <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
+        <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.PAUSCHAL"/>
+        <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
+    </cim:RedispatchableResource>
+    <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
+        <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
+    </cim:Storage>
+    <cim:GeneratingUnit rdf:ID="_123abc">
+        <cim:IdentifiedObject.name>GenUnit</cim:IdentifiedObject.name>
+    </cim:GeneratingUnit>
+    <cim:ControllableResource rdf:ID="_controller">
+        <cim:IdentifiedObject.name>Controller</cim:IdentifiedObject.name>
+        <cim:ControllableResource.manager>Man Ager</cim:ControllableResource.manager>
+        <cim:ControllableResource.balancingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#BalancingModel.PLANWERT"/>
+        <cim:ControllableResource.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
+        <cim:ControllableResource.connectingGridOperator rdf:resource="#_connOperator1"/>
+        <cim:ControllableResource.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
+    </cim:ControllableResource>
+    <cim:AffectedGridOperatorsList rdf:ID="_affOperators1">
+        <cim:IdentifiedObject.name>AffectedGridOperatorsList 1</cim:IdentifiedObject.name>
+    </cim:AffectedGridOperatorsList>
+    <cim:AdditionalAffectedGridOperatorsList rdf:ID="_addtlOperators1">
+        <cim:IdentifiedObject.name>AdditionalAffectedGridOperatorsList 1</cim:IdentifiedObject.name>
+    </cim:AdditionalAffectedGridOperatorsList>
+    <cim:ConnectingGridOperator rdf:ID="_connOperator1">
+        <cim:IdentifiedObject.name>ConnectingGridOperator 1</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme>4</cim:GridOperator.codingScheme>
+        <cim:GridOperator.id>someid</cim:GridOperator.id>
+    </cim:ConnectingGridOperator>
+    <cim:GridOperatorsListEntry rdf:ID="_op1">
+        <cim:IdentifiedObject.name>GridOperator 1</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme>1</cim:GridOperator.codingScheme>
+        <cim:GridOperator.id>some id</cim:GridOperator.id>
+        <cim:GridOperatorsListEntry.order>1</cim:GridOperatorsListEntry.order>
+        <cim:GridOperatorsListEntry.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
+    </cim:GridOperatorsListEntry>
+    <cim:GridOperatorsListEntry rdf:ID="_op2">
+        <cim:IdentifiedObject.name>GridOperator 2</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme>1</cim:GridOperator.codingScheme>
+        <cim:GridOperator.id>some id</cim:GridOperator.id>
+        <cim:GridOperatorsListEntry.order>1</cim:GridOperatorsListEntry.order>
+        <cim:GridOperatorsListEntry.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
+    </cim:GridOperatorsListEntry>
+    <cim:MarketLocationProduction rdf:ID="_MarketLocationProduction1">
+        <cim:IdentifiedObject.name>MarketLocationProduction 1</cim:IdentifiedObject.name>
+        <cim:MarketLocation.meterLocation rdf:resource="#_MeterLocation1"/>
+    </cim:MarketLocationProduction>
+    <cim:MeterLocation rdf:ID="_MeterLocation1">
+        <cim:IdentifiedObject.name>Location 1</cim:IdentifiedObject.name>
+    </cim:MeterLocation>
+</rdf:RDF>
