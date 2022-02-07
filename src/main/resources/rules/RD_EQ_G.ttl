@@ -7,7 +7,6 @@
 
 cim:AffectedGridOperatorsList_manual_Shape
     a              sh:NodeShape ;
-    sh:closed      false ;
     sh:targetClass cim:AffectedGridOperatorsList ;
     sh:property    [ sh:message  "At least one grid operator needs to be connected to every AffectedGridOperatorsList" ;
                      sh:path     [ sh:inversePath cim:GridOperatorsListEntry.affectedGridOperatorsList ] ;
@@ -15,7 +14,6 @@ cim:AffectedGridOperatorsList_manual_Shape
 
 cim:GridOperatorsListEntry_manual_Shape
     a              sh:NodeShape ;
-    sh:closed      false ;
     sh:targetClass cim:GridOperatorsListEntry ;
     sh:message     "A GridOperatorsListEntry needs to be connected to exactly one GridOperatorsList" ;
     sh:xone        ( [ sh:property [ sh:path     cim:GridOperatorsListEntry.affectedGridOperatorsList ;
@@ -24,3 +22,26 @@ cim:GridOperatorsListEntry_manual_Shape
                      [ sh:property [ sh:path     cim:GridOperatorsListEntry.addtlAffectedGridOperatorsList ;
                                      sh:minCount 1 ;
                                      sh:maxCount 1 ; ] ] ) .
+
+cim:ID_Shape
+    a          sh:PropertyShape ;
+    sh:targetObjectsOf cim:GridOperator.id ;
+    sh:targetObjectsOf cim:Supplier.id  ;
+    sh:pattern "^\\d+$" ;
+    sh:message "The ID needs to contain only digits (NDE or GS1 depending on codingScheme)" .
+
+cim:GS1_ID_Shape
+    a             sh:NodeShape ;
+    sh:targetNode cim:CodingScheme.GS1 ;
+    sh:sparql     [ sh:message "Element $value uses GS1 coding scheme but ID does not contain 13 digits." ;
+                    sh:select  """
+                        PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                        SELECT ?id ?gridOperator ?value ?attributeName ?idAttribute
+                        WHERE {
+                            ?gridOperator ?attributeName cim:CodingScheme.GS1 .
+                            ?gridOperator ?idAttribute ?id .
+                            ?gridOperator cim:IdentifiedObject.name ?value .
+                            FILTER (STRENDS(str(?idAttribute), ".id")) .
+                            FILTER (STRLEN(?id) != 13) .
+                        }
+                          """ ] .

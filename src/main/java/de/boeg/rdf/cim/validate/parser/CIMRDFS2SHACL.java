@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 @UtilityClass
 public class CIMRDFS2SHACL {
@@ -84,29 +85,15 @@ public class CIMRDFS2SHACL {
                 if (propertyDataType != null) {
                     var xsdDataType = typeMap.getOrDefault(typeProperty, XSDDatatype.XSDstring);
                     shapeTriples.add(new Triple(propertyUri, SHACL.datatype, NodeFactory.createURI(xsdDataType.getURI())));
-                } else if (propertyRange != null && !isEnumeration(typePropertyRow)) {
-
-
-                    var referenceTarget = typePropertyRow.getLiteral("children");
-                    var targets = referenceTarget.getString().split(", ");
-
-                    if (targets.length > 1) {
-                        var currentListHead = NodeFactory.createBlankNode();
-                        var firstTriple = new Triple(propertyUri, SHACL.or, currentListHead);
-                        for (var child : targets) {
-                            shapeTriples.add(firstTriple);
-                            var childElement = NodeFactory.createBlankNode();
-                            shapeTriples.add(new Triple(currentListHead, RDF.first.asNode(), childElement));
-                            shapeTriples.add(new Triple(childElement, SHACL.class_, NodeFactory.createURI(child)));
-                            var nextListElement = NodeFactory.createBlankNode();
-                            firstTriple = new Triple(currentListHead, RDF.rest.asNode(), nextListElement);
-                            currentListHead = nextListElement;
-                        }
-                        shapeTriples.add(new Triple(firstTriple.getSubject(), RDF.rest.asNode(), RDF.nil.asNode()));
+                } else if (propertyRange != null) {
+                    if (isEnumeration(typePropertyRow)) {
+                        var uriPattern = "^"+ Pattern.quote(propertyRange.toString()) + "\\.";
+                        shapeTriples.add(new Triple(propertyUri, SHACL.pattern, NodeFactory.createLiteral(uriPattern)));
+                        var errorMessage = "This enumeration needs to be of kind " + propertyRange;
+                        shapeTriples.add(new Triple(propertyUri, SHACL.message, NodeFactory.createLiteral(errorMessage)));
                     } else {
-                        shapeTriples.add(new Triple(propertyUri, SHACL.class_, propertyRange.asNode()));
+                        shapeTriples.addAll(generateReferenceTriples(typePropertyRow, propertyUri));
                     }
-
                     shapeTriples.add(new Triple(propertyUri, SHACL.nodeKind, SHACL.IRI));
                 }
 
@@ -114,6 +101,31 @@ public class CIMRDFS2SHACL {
             }
         }
 
+        return shapeTriples;
+    }
+
+    private static List<Triple> generateReferenceTriples(QuerySolution typePropertyRow, Node propertyUri) {
+        var shapeTriples = new ArrayList<Triple>();
+        var referenceTarget = typePropertyRow.getLiteral("children");
+        var targets = referenceTarget.getString().split(", ");
+        var propertyRange = typePropertyRow.get("range");
+
+        if (targets.length > 1) {
+            var currentListHead = NodeFactory.createBlankNode();
+            var firstTriple = new Triple(propertyUri, SHACL.or, currentListHead);
+            for (var child : targets) {
+                shapeTriples.add(firstTriple);
+                var childElement = NodeFactory.createBlankNode();
+                shapeTriples.add(new Triple(currentListHead, RDF.first.asNode(), childElement));
+                shapeTriples.add(new Triple(childElement, SHACL.class_, NodeFactory.createURI(child)));
+                var nextListElement = NodeFactory.createBlankNode();
+                firstTriple = new Triple(currentListHead, RDF.rest.asNode(), nextListElement);
+                currentListHead = nextListElement;
+            }
+            shapeTriples.add(new Triple(firstTriple.getSubject(), RDF.rest.asNode(), RDF.nil.asNode()));
+        } else {
+            shapeTriples.add(new Triple(propertyUri, SHACL.class_, propertyRange.asNode()));
+        }
         return shapeTriples;
     }
 
@@ -128,7 +140,7 @@ public class CIMRDFS2SHACL {
     private List<Triple> generateNodeShape(Node shapeNode, Node targetClass) {
         var shapeTriples = new ArrayList<Triple>();
         shapeTriples.add(new Triple(shapeNode, RDF.type.asNode(), SHACL.NodeShape));
-        shapeTriples.add(new Triple(shapeNode, SHACL.closed, NodeFactory.createLiteral("false", XSDDatatype.XSDboolean)));
+        shapeTriples.add(new Triple(shapeNode, SHACL.closed, NodeFactory.createLiteral("true", XSDDatatype.XSDboolean)));
 
         var tmp = NodeFactory.createBlankNode();
         shapeTriples.add(new Triple(shapeNode, SHACL.ignoredProperties, tmp));

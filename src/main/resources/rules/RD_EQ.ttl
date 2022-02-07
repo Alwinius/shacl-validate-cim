@@ -8,7 +8,7 @@
 cim:RedispatchableResource_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
-    sh:message "There must be exactly one Storage or GeneratingUnit attached to every RedispatchableResource" ;
+    sh:message     "There must be exactly one Storage or GeneratingUnit attached to every RedispatchableResource" ;
     sh:xone        ( [ sh:property [ sh:path     cim:RedispatchableResource.storage ;
                                      sh:minCount 1 ;
                                      sh:maxCount 1 ; ] ; ]
@@ -17,15 +17,20 @@ cim:RedispatchableResource_manual_Shape
                                      sh:maxCount 1 ; ] ] ) ;
     sh:targetClass cim:RedispatchableResource .
 
+cim:Storage_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:Storage ;
+    sh:property    [ sh:path         cim:Storage.efficiency ;
+                     sh:message      "The efficiency of a storage unit cannot be over 100 percent." ;
+                     sh:maxExclusive 100 ] .
+
 cim:ControllableResource_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
     sh:targetClass cim:ControllableResource ;
-    sh:property    [ sh:message "Every ControllableResource needs to be connected to at least one RedispatchableResource" ;
-                     sh:path        [ sh:inversePath cim:RedispatchableResource.controllableResource ] ;
-                     sh:minCount    1 ; ] ;
     sh:sparql      [ sh:message "A ControllableResource can only represent either Storages or GeneratingUnits." ;
-                     sh:select      """
+                     sh:select  """
                         PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
                         SELECT (COUNT(?type) as ?differentKinds) WHERE {
@@ -44,7 +49,7 @@ cim:Controllability_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
     sh:targetClass cim:Controllability ;
-    sh:message "There must be exactly one StepsList or Increments attached to every Controllability" ;
+    sh:message     "There must be exactly one StepsList or Increments attached to every Controllability" ;
     sh:xone        ( [ sh:property [ sh:path     cim:Controllability.stepsList ;
                                      sh:minCount 1 ;
                                      sh:maxCount 1 ; ] ; ]
@@ -56,18 +61,18 @@ cim:Increments_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
     sh:targetClass cim:Increments ;
-    sh:property    [ sh:message "Every Increments needs to be connected to exactly one Controllability" ;
-                     sh:path        [ sh:inversePath cim:Controllability.increments ] ;
-                     sh:minCount    1 ;
-                     sh:maxCount    1 ] ;
-    sh:property    [ sh:message "The maximum of every Increments needs to be larger than the minimum" ;
-                     sh:path        cim:Increments.min ;
-                     sh:lessThan    cim:Increments.max ] ;
-    sh:property    [ sh:message  "The width of every Increments must be larger than zero" ;
+    sh:property    [ sh:message  "Every Increments needs to be connected to exactly one Controllability" ;
+                     sh:path     [ sh:inversePath cim:Controllability.increments ] ;
+                     sh:minCount 1 ;
+                     sh:maxCount 1 ] ;
+    sh:property    [ sh:message  "The maximum of every Increments needs to be larger than the minimum" ;
+                     sh:path     cim:Increments.min ;
+                     sh:lessThan cim:Increments.max ] ;
+    sh:property    [ sh:message      "The width of every Increments must be larger than zero" ;
                      sh:path         cim:Increments.width ;
                      sh:minExclusive 0 ] ;
     sh:sparql      [ sh:message "width of Increments must be at most the distance between min and max" ;
-                     sh:select      """
+                     sh:select  """
                          PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                                                 SELECT ?value WHERE {
                             $this cim:Increments.max ?max ;
@@ -78,7 +83,7 @@ cim:Increments_manual_Shape
                           }
                           """ ] ;
     sh:sparql      [ sh:message "max (and min) should be smaller or equal to the sum of netBottleneckPProduction of all connected RedispatchableResources" ;
-                     sh:select      """
+                     sh:select  """
                                 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                                 SELECT ?incProduction (sum(?componentProduction) as ?value) WHERE {
                                  $this ^cim:Controllability.increments/
@@ -95,19 +100,19 @@ cim:StepsList_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
     sh:targetClass cim:StepsList ;
-    sh:property    [ sh:message "Every StepsList needs to be connected to at least 2 Steps" ;
-                     sh:path        [ sh:inversePath cim:Step.stepsList ] ;
-                     sh:minCount    2 ] .
+    sh:property    [ sh:message  "Every StepsList needs to be connected to at least 2 Steps" ;
+                     sh:path     [ sh:inversePath cim:Step.stepsList ] ;
+                     sh:minCount 2 ] .
 
 cim:Step_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
     sh:targetClass cim:Step ;
-    sh:property    [ sh:message  "Power of every Step needs to be zero or larger" ;
+    sh:property    [ sh:message      "Power of every Step needs to be zero or larger" ;
                      sh:path         cim:Step.p ;
                      sh:minInclusive 0 ; ] ;
     sh:sparql      [ sh:message "p should be smaller or equal to the sum of netBottleneckPProduction of all connected RedispatchableResources" ;
-                     sh:select      """
+                     sh:select  """
                             PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                             SELECT ?stepProduction (sum(?componentProduction) as ?value) WHERE {
                              $this cim:Step.stepsList/

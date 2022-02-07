@@ -24,7 +24,7 @@
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
-                <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
+                <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>
 <!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
@@ -36,8 +36,17 @@
         <cim:Storage.netNominalPConsumption>123.6</cim:Storage.netNominalPConsumption>
         <cim:Storage.maxPDischarge>123.6</cim:Storage.maxPDischarge>
         <cim:Storage.netBottleneckPConsumption>123.6</cim:Storage.netBottleneckPConsumption>
-        <cim:Storage.efficiency>123.6</cim:Storage.efficiency>
+        <cim:Storage.efficiency>94</cim:Storage.efficiency>
         <cim:Storage.maxPStore>123.6</cim:Storage.maxPStore>
+        <cim:Storage.usableEnergyContent>123.6</cim:Storage.usableEnergyContent>
+    </cim:Storage>
+    <cim:Storage rdf:ID="_Storage2">
+        <cim:IdentifiedObject.name>storage2</cim:IdentifiedObject.name>
+        <cim:Storage.netNominalPConsumption>13.6</cim:Storage.netNominalPConsumption>
+        <cim:Storage.maxPDischarge>13.6</cim:Storage.maxPDischarge>
+        <cim:Storage.netBottleneckPConsumption>12.6</cim:Storage.netBottleneckPConsumption>
+        <cim:Storage.efficiency>80</cim:Storage.efficiency>
+        <cim:Storage.maxPStore>12</cim:Storage.maxPStore>
         <cim:Storage.usableEnergyContent>123.6</cim:Storage.usableEnergyContent>
     </cim:Storage>
     <cim:GeneratingUnit rdf:ID="_123abc">

@@ -521,6 +521,13 @@ Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comme
 	<cims:AssociationUsed>Yes</cims:AssociationUsed>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
+	 <rdf:Description rdf:about="#Equipment">
+	<rdfs:label xml:lang="en">Equipment</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
+	<rdfs:comment  rdf:parseType="Literal">The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
 	 <rdf:Description rdf:about="#IdentifiedObject">
 	<rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
 	<rdfs:comment  rdf:parseType="Literal">This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
@@ -579,6 +586,12 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the m
 	<cims:stereotype>Entsoe</cims:stereotype>
 	<rdfs:comment  rdf:parseType="Literal">The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</rdfs:comment>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerSystemResource">
+	<rdfs:label xml:lang="en">PowerSystemResource</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
 	 </rdf:Description>
 	 <rdf:Description rdf:about="#Package_GridOperators">
 	<rdfs:label xml:lang="en">GridOperators</rdfs:label>
@@ -766,10 +779,24 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the m
 	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
 	<rdfs:label xml:lang="en">codingScheme</rdfs:label>
 	<rdfs:domain rdf:resource="#GridOperator"/>
-	<cims:dataType rdf:resource="#Integer"/>
+	<rdfs:range rdf:resource="#CodingScheme"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
+	 <rdf:Description rdf:about="#CodingScheme">
+	<rdfs:label xml:lang="en">CodingScheme</rdfs:label>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchEquipmentProfileGermany"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#CodingScheme.GS1">
+	<rdfs:label xml:lang="en">GS1</rdfs:label>
+	<rdf:type rdf:resource="#CodingScheme"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#CodingScheme.NDE">
+	<rdfs:label xml:lang="en">NDE</rdfs:label>
+	<rdf:type rdf:resource="#CodingScheme"/>
+</rdf:Description>
 	 <rdf:Description rdf:about="#GridOperator.id">
 	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
 	<rdfs:label xml:lang="en">id</rdfs:label>
@@ -1226,7 +1253,7 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the m
 	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
 	<rdfs:label xml:lang="en">codingScheme</rdfs:label>
 	<rdfs:domain rdf:resource="#Supplier"/>
-	<cims:dataType rdf:resource="#Integer"/>
+	<rdfs:range rdf:resource="#CodingScheme"/>
 	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>

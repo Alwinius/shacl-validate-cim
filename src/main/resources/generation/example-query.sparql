@@ -1,11 +1,14 @@
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
 
-SELECT ?incProduction (sum(?componentProduction) as ?value) WHERE {
- <#_Increments1> ^cim:Controllability.increments/
-             ^cim:ControllableResource.controllability/
-             ^cim:RedispatchableResource.controllableResource/
-              cim:RedispatchableResource.netBottleneckPProduction ?componentProduction .
- <#_Increments1> cim:Increments.max ?incProduction .
+SELECT ?id ?gridOperator ?name ?attributeName ?idAttribute
+WHERE {
+    ?gridOperator ?attributeName cim:CodingScheme.GS1 .
+    ?gridOperator ?idAttribute ?id .
+    ?gridOperator cim:IdentifiedObject.name ?name .
+    FILTER (STRENDS(str(?idAttribute), ".id")) .
+    FILTER (STRLEN(?id) != 13) .
 }
-GROUP BY ?incProduction
-HAVING (sum(?componentProduction) < ?incProduction)

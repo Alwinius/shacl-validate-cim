@@ -17,7 +17,7 @@ import java.io.InputStream;
 public class QueryData {
 
     public static void main(String[] args) throws IOException {
-        var underTest = ExampleDataRegister.MINIGRID_RD_EQ;
+        var underTest = ExampleDataRegister.MINIGRID_RD_EQ_G;
 
         // setup type mapping
         var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(underTest.rdfs.path);
