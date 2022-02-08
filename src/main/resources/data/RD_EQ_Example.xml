@@ -20,15 +20,15 @@
 <!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>345</cim:RedispatchableResource.netBottleneckPProduction>
-        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
-        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
+        <cim:IdentifiedObject.name>Complicated TR</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller2"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
                 <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>
 <!--        <cim:RedispatchableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
-        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
@@ -54,6 +54,12 @@
     </cim:GeneratingUnit>
     <cim:ControllableResource rdf:ID="_controller">
         <cim:IdentifiedObject.name>Controller</cim:IdentifiedObject.name>
+        <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
+        <cim:ControllableResource.controlArea rdf:resource="#_ControlArea"/>
+        <cim:ControllableResource.controllability rdf:resource="#_Controllability"/>
+    </cim:ControllableResource>
+    <cim:ControllableResource rdf:ID="_controller2">
+        <cim:IdentifiedObject.name>Controller2</cim:IdentifiedObject.name>
         <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
         <cim:ControllableResource.controlArea rdf:resource="#_ControlArea"/>
         <cim:ControllableResource.controllability rdf:resource="#_Controllability"/>

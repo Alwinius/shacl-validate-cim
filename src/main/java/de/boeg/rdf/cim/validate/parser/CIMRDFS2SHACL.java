@@ -11,6 +11,7 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.QuerySolution;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
@@ -81,16 +82,12 @@ public class CIMRDFS2SHACL {
                 } else {
                     shapeTriples.add(new Triple(propertyUri, SHACL.path, typeProperty));
                 }
-
                 if (propertyDataType != null) {
                     var xsdDataType = typeMap.getOrDefault(typeProperty, XSDDatatype.XSDstring);
                     shapeTriples.add(new Triple(propertyUri, SHACL.datatype, NodeFactory.createURI(xsdDataType.getURI())));
                 } else if (propertyRange != null) {
                     if (isEnumeration(typePropertyRow)) {
-                        var uriPattern = "^"+ Pattern.quote(propertyRange.toString()) + "\\.";
-                        shapeTriples.add(new Triple(propertyUri, SHACL.pattern, NodeFactory.createLiteral(uriPattern)));
-                        var errorMessage = "This enumeration needs to be of kind " + propertyRange;
-                        shapeTriples.add(new Triple(propertyUri, SHACL.message, NodeFactory.createLiteral(errorMessage)));
+                        shapeTriples.addAll(generateEnumTriples(propertyRange, propertyUri));
                     } else {
                         shapeTriples.addAll(generateReferenceTriples(typePropertyRow, propertyUri));
                     }
@@ -102,6 +99,13 @@ public class CIMRDFS2SHACL {
         }
 
         return shapeTriples;
+    }
+
+    private static List<Triple> generateEnumTriples(RDFNode propertyRange, Node propertyUri) {
+        var uriPattern = "^"+ Pattern.quote(propertyRange.toString()) + "\\.";
+        var errorMessage = "This enumeration needs to be of kind " + propertyRange;
+        return List.of(new Triple(propertyUri, SHACL.pattern, NodeFactory.createLiteral(uriPattern)),
+                       new Triple(propertyUri, SHACL.message, NodeFactory.createLiteral(errorMessage)));
     }
 
     private static List<Triple> generateReferenceTriples(QuerySolution typePropertyRow, Node propertyUri) {

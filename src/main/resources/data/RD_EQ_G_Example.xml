@@ -16,13 +16,13 @@
         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
     </md:FullModel>
     <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
-        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:IdentifiedObject.name>Complicated TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
         <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.SPITZ"/>
         <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
-        <cim:IdentifiedObject.name>testName</cim:IdentifiedObject.name>
+        <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
         <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.PAUSCHAL"/>
         <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>

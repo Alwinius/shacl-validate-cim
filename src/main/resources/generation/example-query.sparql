@@ -4,11 +4,12 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
 PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
 
-SELECT ?id ?gridOperator ?name ?attributeName ?idAttribute
+SELECT ?s ?kind (COUNT(?planningValue) as ?count) (GROUP_CONCAT(?planningValueName;SEPARATOR=", ") as ?offenders)
 WHERE {
-    ?gridOperator ?attributeName cim:CodingScheme.GS1 .
-    ?gridOperator ?idAttribute ?id .
-    ?gridOperator cim:IdentifiedObject.name ?name .
-    FILTER (STRENDS(str(?idAttribute), ".id")) .
-    FILTER (STRLEN(?id) != 13) .
+    ?s  a cim:RedispatchableResource ;
+        cim:RedispatchableResource.controllableResource?/^cim:PlanningValue.powerSystemResource ?planningValue .
+    ?planningValue cim:PlanningValue.kind ?kind ;
+                   cim:IdentifiedObject.name ?planningValueName .
 }
+GROUP BY ?kind ?s
+HAVING(?count > 1)

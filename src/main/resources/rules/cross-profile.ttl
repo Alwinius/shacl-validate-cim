@@ -1,0 +1,109 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xs:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+
+cim:ControllableResource_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:ControllableResource ;
+    sh:sparql      [ sh:message "A ControllableResource can only represent either Storages or GeneratingUnits." ;
+                     sh:select  """
+                        PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                        SELECT (COUNT(?type) as ?differentKinds) WHERE {
+                            SELECT ?type WHERE {
+                             $this ^cim:RedispatchableResource.controllableResource/
+                                             (cim:RedispatchableResource.generatingUnit |
+                                            cim:RedispatchableResource.storage )/
+                                            rdf:type ?type .
+                            }
+                            GROUP BY ?type
+                        }
+                        HAVING(?differentKinds>1)
+                          """ ] .
+
+cim:ActivePowerPlanningValue_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:ActivePowerPlanningValue ;
+    sh:property    [ sh:path     cim:PlanningValue.powerSystemResource ;
+                     sh:nodeKind sh:IRI ;
+                     sh:message  "Planning values can only be connected to RedispatchableResources or ControllableResources" ;
+                     sh:or       ( [ sh:class cim:RedispatchableResource ]
+                                   [ sh:class cim:ControllableResource ] ) ;
+                     sh:minCount 1 ;
+                     sh:maxCount 1 ] ;
+    sh:sparql      [ sh:message "PlanningData for VERB, Vmin, Vmax needs to be smaller or equal to the sum of all netBottleneckPConsumption of connected storages" ;
+                     sh:select  """
+                PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                SELECT $this ?verb (sum(?consumption) as ?value)
+                WHERE {
+                    VALUES ?kind { "VERB" "Vmax" "Vmin" }
+                    $this cim:PlanningValue.kind ?kind ;
+                                   cim:ActivePowerPlanningValue.value ?verb ;
+                                   cim:PlanningValue.powerSystemResource/^cim:RedispatchableResource.controllableResource?/cim:RedispatchableResource.storage ?storage .
+                    ?storage       cim:Storage.netBottleneckPConsumption ?consumption .
+                }
+                GROUP BY $this ?verb
+                HAVING (?verb > ?value)
+
+              """ ] ;
+    sh:sparql      [ sh:message "PlanningData for VERB, Vmin, Vmax can only be set for storages" ;
+                     sh:select  """
+                PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                SELECT $this ?value
+                WHERE {
+                    VALUES ?kind { "VERB" "Vmax" "Vmin" }
+                    $this cim:PlanningValue.kind ?kind ;
+                                   cim:PlanningValue.powerSystemResource/^cim:RedispatchableResource.controllableResource?/cim:RedispatchableResource.generatingUnit ?genUnit .
+                    ?genUnit cim:IdentifiedObject.name ?value
+                }
+              """ ] .
+
+cim:RedispatchableResourceContainsPlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:RedispatchableResource ;
+    sh:property    [ sh:path     ( [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:inversePath cim:PlanningValue.powerSystemResource ]
+                                   cim:PlanningValue.kind ) ;
+                     sh:hasValue "PROD" ;
+                     sh:hasValue "+RDV" ;
+                     sh:hasValue "-RDV" ;
+                     sh:hasValue "Pmin" ;
+                     sh:hasValue "Pmax" ;
+                     sh:hasValue "-RDA" ;
+                     sh:hasValue "+RDA" ] .
+
+cim:StorageContainsPlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:Storage ;
+    sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.storage ]
+                                   [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:inversePath cim:PlanningValue.powerSystemResource ]
+                                   cim:PlanningValue.kind ) ;
+                     sh:hasValue "VERB" ;
+                     sh:hasValue "Vmin" ;
+                     sh:hasValue "Vmax" ] .
+
+cim:RedispatchableResourceSinglePlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:RedispatchableResource ;
+    sh:sparql      [ sh:message "For every RedispatchableResource there should be only one instance of planning data for any kind" ;
+                     sh:select  """
+                        PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                        SELECT $this ?kind (COUNT(?planningValue) as ?count) (GROUP_CONCAT(?planningValueName;SEPARATOR=", ") as ?value)
+                        WHERE {
+                            $this  a cim:RedispatchableResource ;
+                                cim:RedispatchableResource.controllableResource?/^cim:PlanningValue.powerSystemResource ?planningValue .
+                            ?planningValue cim:PlanningValue.kind ?kind ;
+                                           cim:IdentifiedObject.name ?planningValueName .
+                        }
+                        GROUP BY ?kind $this
+                        HAVING(?count > 1)
+              """ ] .
