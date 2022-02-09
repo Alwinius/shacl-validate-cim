@@ -1117,6 +1117,24 @@ For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the m
 	<cims:AssociationUsed>No</cims:AssociationUsed>
 	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
 	 </rdf:Description>
+	 <rdf:Description rdf:about="#Cluster.globalCluster">
+	<rdfs:label xml:lang="en">globalCluster</rdfs:label>
+	<rdfs:domain rdf:resource="#Cluster"/>
+	<rdfs:range rdf:resource="#Cluster"/>
+	<cims:inverseRoleName rdf:resource="#Cluster.localCluster"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Cluster.localCluster">
+	<rdfs:label xml:lang="en">localCluster</rdfs:label>
+	<rdfs:domain rdf:resource="#Cluster"/>
+	<rdfs:range rdf:resource="#Cluster"/>
+	<cims:inverseRoleName rdf:resource="#Cluster.globalCluster"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
 	 <rdf:Description rdf:about="#ControlGroup">
 	<rdfs:label xml:lang="en">ControlGroup</rdfs:label>
 	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>

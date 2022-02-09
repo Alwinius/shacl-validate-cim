@@ -4,12 +4,16 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
 PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
 
-SELECT ?s ?kind (COUNT(?planningValue) as ?count) (GROUP_CONCAT(?planningValueName;SEPARATOR=", ") as ?offenders)
+PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+SELECT $this ?value
 WHERE {
-    ?s  a cim:RedispatchableResource ;
-        cim:RedispatchableResource.controllableResource?/^cim:PlanningValue.powerSystemResource ?planningValue .
-    ?planningValue cim:PlanningValue.kind ?kind ;
-                   cim:IdentifiedObject.name ?planningValueName .
+    VALUES ?kind { "VERB" "Vmax" "Vmin" }
+    $this  cim:PlanningValue.kind ?kind ;
+           cim:PlanningValue.powerSystemResource/
+           ^cim:Cluster.globalCluster*/
+           cim:Cluster.controlGroup?/
+           ^cim:ControllableResource.controlGroup?/
+           ^cim:RedispatchableResource.controllableResource?/
+           cim:RedispatchableResource.storage                ?genUnit .
+    ?genUnit cim:IdentifiedObject.name ?value
 }
-GROUP BY ?kind ?s
-HAVING(?count > 1)

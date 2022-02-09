@@ -5,26 +5,6 @@
 @prefix schema: <http://schema.org/> .
 @prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
 
-cim:ControllableResource_manual_Shape
-    a              sh:NodeShape ;
-    sh:closed      false ;
-    sh:targetClass cim:ControllableResource ;
-    sh:sparql      [ sh:message "A ControllableResource can only represent either Storages or GeneratingUnits." ;
-                     sh:select  """
-                        PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
-                        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-                        SELECT (COUNT(?type) as ?differentKinds) WHERE {
-                            SELECT ?type WHERE {
-                             $this ^cim:RedispatchableResource.controllableResource/
-                                             (cim:RedispatchableResource.generatingUnit |
-                                            cim:RedispatchableResource.storage )/
-                                            rdf:type ?type .
-                            }
-                            GROUP BY ?type
-                        }
-                        HAVING(?differentKinds>1)
-                          """ ] .
-
 cim:ActivePowerPlanningValue_manual_Shape
     a              sh:NodeShape ;
     sh:closed      false ;
@@ -33,7 +13,9 @@ cim:ActivePowerPlanningValue_manual_Shape
                      sh:nodeKind sh:IRI ;
                      sh:message  "Planning values can only be connected to RedispatchableResources or ControllableResources" ;
                      sh:or       ( [ sh:class cim:RedispatchableResource ]
-                                   [ sh:class cim:ControllableResource ] ) ;
+                                   [ sh:class cim:ControllableResource ]
+                                   [ sh:class cim:Cluster ]
+                                   [ sh:class cim:ControlGroup ] ) ;
                      sh:minCount 1 ;
                      sh:maxCount 1 ] ;
     sh:sparql      [ sh:message "PlanningData for VERB, Vmin, Vmax needs to be smaller or equal to the sum of all netBottleneckPConsumption of connected storages" ;
@@ -44,12 +26,34 @@ cim:ActivePowerPlanningValue_manual_Shape
                     VALUES ?kind { "VERB" "Vmax" "Vmin" }
                     $this cim:PlanningValue.kind ?kind ;
                                    cim:ActivePowerPlanningValue.value ?verb ;
-                                   cim:PlanningValue.powerSystemResource/^cim:RedispatchableResource.controllableResource?/cim:RedispatchableResource.storage ?storage .
+                                   cim:PlanningValue.powerSystemResource/
+                                   ^cim:Cluster.globalCluster*/
+                                   cim:Cluster.controlGroup?/
+                                   ^cim:ControllableResource.controlGroup?/
+                                   ^cim:RedispatchableResource.controllableResource?/
+                                   cim:RedispatchableResource.storage ?storage .
                     ?storage       cim:Storage.netBottleneckPConsumption ?consumption .
                 }
                 GROUP BY $this ?verb
                 HAVING (?verb > ?value)
-
+              """ ] ;
+    sh:sparql      [ sh:message "PlanningData for PROD, Pmin, Pmax needs to be smaller or equal to the sum of all netBottleneckPProduction of connected redispatchable resources" ;
+                     sh:select  """
+                PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                SELECT $this ?prod (sum(?production) as ?value)
+                WHERE {
+                    VALUES ?kind { "Pmin" "Pmax" "PROD" }
+                    $this          cim:PlanningValue.kind ?kind ;
+                                   cim:ActivePowerPlanningValue.value ?prod ;
+                                   cim:PlanningValue.powerSystemResource/
+                                   ^cim:Cluster.globalCluster*/
+                                   cim:Cluster.controlGroup?/
+                                   ^cim:ControllableResource.controlGroup?/
+                                   ^cim:RedispatchableResource.controllableResource? ?tr .
+                    ?tr       cim:RedispatchableResource.netBottleneckPProduction ?production .
+                }
+                GROUP BY $this ?prod
+                HAVING (?prod > ?value)
               """ ] ;
     sh:sparql      [ sh:message "PlanningData for VERB, Vmin, Vmax can only be set for storages" ;
                      sh:select  """
@@ -58,7 +62,12 @@ cim:ActivePowerPlanningValue_manual_Shape
                 WHERE {
                     VALUES ?kind { "VERB" "Vmax" "Vmin" }
                     $this cim:PlanningValue.kind ?kind ;
-                                   cim:PlanningValue.powerSystemResource/^cim:RedispatchableResource.controllableResource?/cim:RedispatchableResource.generatingUnit ?genUnit .
+                                   cim:PlanningValue.powerSystemResource/
+                                   ^cim:Cluster.globalCluster*/
+                                   cim:Cluster.controlGroup?/
+                                   ^cim:ControllableResource.controlGroup?/
+                                   ^cim:RedispatchableResource.controllableResource?/
+                                   cim:RedispatchableResource.generatingUnit ?genUnit .
                     ?genUnit cim:IdentifiedObject.name ?value
                 }
               """ ] .
@@ -68,6 +77,9 @@ cim:RedispatchableResourceContainsPlanningData_Shape
     sh:closed      false ;
     sh:targetClass cim:RedispatchableResource ;
     sh:property    [ sh:path     ( [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
+                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;
                      sh:hasValue "PROD" ;
@@ -84,6 +96,9 @@ cim:StorageContainsPlanningData_Shape
     sh:targetClass cim:Storage ;
     sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.storage ]
                                    [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
+                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;
                      sh:hasValue "VERB" ;
@@ -99,11 +114,66 @@ cim:RedispatchableResourceSinglePlanningData_Shape
                         PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                         SELECT $this ?kind (COUNT(?planningValue) as ?count) (GROUP_CONCAT(?planningValueName;SEPARATOR=", ") as ?value)
                         WHERE {
-                            $this  a cim:RedispatchableResource ;
-                                cim:RedispatchableResource.controllableResource?/^cim:PlanningValue.powerSystemResource ?planningValue .
-                            ?planningValue cim:PlanningValue.kind ?kind ;
-                                           cim:IdentifiedObject.name ?planningValueName .
+                            $this   cim:RedispatchableResource.controllableResource?/
+                                    cim:ControllableResource.controlGroup?/
+                                    ^cim:Cluster.controlGroup/
+                                    cim:Cluster.globalCluster*/
+                                    ^cim:PlanningValue.powerSystemResource ?planningValue .
+                                    ?planningValue cim:PlanningValue.kind ?kind ;
+                                    cim:IdentifiedObject.name ?planningValueName .
                         }
                         GROUP BY ?kind $this
                         HAVING(?count > 1)
               """ ] .
+
+cim:RedispatchableResourceExplicitOrImplicitPlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:RedispatchableResource ;
+    sh:sparql      [ sh:message "All planning values should be attached to either the RedispatchableResource, ControllableResource, ControlGroup or Cluster, not multiple" ;
+                     sh:select  """
+                      PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                      SELECT $this (COUNT(?base) as ?baseCounter) (GROUP_CONCAT(?base;SEPARATOR=", ") as ?bases) WHERE {
+                        SELECT $this ?base
+                        WHERE {
+                            $this   a cim:RedispatchableResource ;
+                                    cim:RedispatchableResource.controllableResource?/
+                                    cim:ControllableResource.controlGroup?/
+                                    ^cim:Cluster.controlGroup?/
+                                    cim:Cluster.globalCluster* ?base .
+                            ?base   ^cim:PlanningValue.powerSystemResource ?planningValue .
+                        }
+                        GROUP BY $this ?base
+                    }
+                    GROUP BY $this
+                    HAVING(?baseCounter > 1)
+                    """ ] .
+
+cim:WindGeneratingUnitContainsPlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:WindGeneratingUnit ;
+    sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.generatingUnit ]
+                                   [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
+                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
+                                   [ sh:inversePath cim:PlanningValue.powerSystemResource ]
+                                   cim:PlanningValue.kind ) ;
+                     sh:hasValue "Pdar (Wind)" ] .
+
+cim:SolarGeneratingUnitContainsPlanningData_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:SolarGeneratingUnit ;
+    sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.generatingUnit ]
+                                   [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
+                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
+                                   [ sh:inversePath cim:PlanningValue.powerSystemResource ]
+                                   cim:PlanningValue.kind ) ;
+                     sh:hasValue "Pdar (Solar)" ] .
+
+# relations between multiple planning data values?
+# ramps

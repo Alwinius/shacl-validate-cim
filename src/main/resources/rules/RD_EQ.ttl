@@ -125,3 +125,13 @@ cim:Step_manual_Shape
                             GROUP BY $this ?stepProduction
                             HAVING (sum(?componentProduction) < ?stepProduction)
                               """ ] .
+
+cim:GeneratingUnit_manual_Shape
+    a              sh:NodeShape ;
+    sh:closed      false ;
+    sh:targetClass cim:WindGeneratingUnit ;
+    sh:targetClass cim:SolarGeneratingUnit ;
+    sh:targetClass cim:GeneratingUnit ;
+    sh:property    [ sh:path     [ sh:inversePath cim:RedispatchableResource.generatingUnit ] ;
+                     sh:minCount 1 ;
+                     sh:maxCount 1 ; ] .

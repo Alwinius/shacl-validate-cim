@@ -40,6 +40,7 @@
         <cim:ControllableResource.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
         <cim:ControllableResource.connectingGridOperator rdf:resource="#_connOperator1"/>
         <cim:ControllableResource.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
+        <cim:ControllableResource.controlGroup rdf:resource="#_CG1"/>
     </cim:ControllableResource>
     <cim:AffectedGridOperatorsList rdf:ID="_affOperators1">
         <cim:IdentifiedObject.name>AffectedGridOperatorsList 1</cim:IdentifiedObject.name>
@@ -78,4 +79,16 @@
         <cim:Supplier.id>0325230325233</cim:Supplier.id>
         <cim:IdentifiedObject.name>abc</cim:IdentifiedObject.name>
     </cim:Supplier>
+    <cim:ControlGroup rdf:ID="_CG1">
+        <cim:IdentifiedObject.name>Controlgroup 1</cim:IdentifiedObject.name>
+        <cim:ControlGroup.requestTime>23</cim:ControlGroup.requestTime>
+    </cim:ControlGroup>
+    <cim:Cluster rdf:ID="_Cluster1">
+        <cim:IdentifiedObject.name>Cluster 1</cim:IdentifiedObject.name>
+        <cim:Cluster.controlGroup rdf:resource="#_CG1"/>
+        <cim:Cluster.globalCluster rdf:resource="#_Cluster2"/>
+    </cim:Cluster>
+    <cim:Cluster rdf:ID="_Cluster2">
+        <cim:IdentifiedObject.name>Cluster 2</cim:IdentifiedObject.name>
+    </cim:Cluster>
 </rdf:RDF>

@@ -9,14 +9,17 @@ import lombok.extern.java.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
 import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.riot.RDFFormat;
 import org.apache.jena.shacl.ShaclValidator;
 import org.apache.jena.shacl.Shapes;
 import org.apache.jena.shacl.ValidationReport;
 import org.apache.jena.shacl.validation.ReportEntry;
 import org.apache.jena.sparql.graph.GraphFactory;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -51,13 +54,17 @@ public class ShaclValidationExample {
         typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdPd.rdfs.path));
 
         // setup shapes
-        var shapesGenerated = CIMRDFS2SHACL.generate(rdEqG.rdfs.path, typeMap);
-        var shapesManual = ShaclReader.readFromFile(rdEqG.rdfs.rulesPath);
+        var shapesGeneratedRdEqG = CIMRDFS2SHACL.generate(rdEqG.rdfs.path, typeMap);
+        var shapesGeneratedRdEq = CIMRDFS2SHACL.generate(rdEq.rdfs.path, typeMap);
+        var shapesManualRdEqG = ShaclReader.readFromFile(rdEqG.rdfs.rulesPath);
+        var shapesManualRdEq = ShaclReader.readFromFile(rdEq.rdfs.rulesPath);
         var shapesCombined = ShaclReader.readFromFile("rules/cross-profile.ttl");
 
-   //     RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGenerated.getGraph()), RDFFormat.TURTLE_PRETTY);
-        doBenchmark(typeMap, shapesManual, List.of(rdEqG.path));
-        doBenchmark(typeMap, shapesGenerated, List.of(rdEqG.path));
+        RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGeneratedRdEqG.getGraph()), RDFFormat.TURTLE_PRETTY);
+        doBenchmark(typeMap, shapesManualRdEqG, List.of(rdEqG.path));
+        doBenchmark(typeMap, shapesManualRdEq, List.of(rdEq.path));
+        doBenchmark(typeMap, shapesGeneratedRdEqG, List.of(rdEqG.path));
+        doBenchmark(typeMap, shapesGeneratedRdEq, List.of(rdEq.path));
         doBenchmark(typeMap, shapesCombined, List.of(rdEqG.path, rdEq.path, rdPd.path));
     }
 

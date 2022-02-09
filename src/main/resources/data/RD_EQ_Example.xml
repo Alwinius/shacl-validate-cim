@@ -49,9 +49,6 @@
         <cim:Storage.maxPStore>12</cim:Storage.maxPStore>
         <cim:Storage.usableEnergyContent>123.6</cim:Storage.usableEnergyContent>
     </cim:Storage>
-    <cim:GeneratingUnit rdf:ID="_123abc">
-        <cim:IdentifiedObject.name>GenUnit</cim:IdentifiedObject.name>
-    </cim:GeneratingUnit>
     <cim:ControllableResource rdf:ID="_controller">
         <cim:IdentifiedObject.name>Controller</cim:IdentifiedObject.name>
         <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
@@ -62,7 +59,7 @@
         <cim:IdentifiedObject.name>Controller2</cim:IdentifiedObject.name>
         <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
         <cim:ControllableResource.controlArea rdf:resource="#_ControlArea"/>
-        <cim:ControllableResource.controllability rdf:resource="#_Controllability"/>
+        <cim:ControllableResource.controllability rdf:resource="#_Controllability2"/>
     </cim:ControllableResource>
     <cim:ControlArea rdf:ID="_ControlArea">
         <cim:IdentifiedObject.name>ControlArea 1</cim:IdentifiedObject.name>
@@ -78,17 +75,22 @@
         <cim:Increments.max>250</cim:Increments.max>
         <cim:Increments.width>0.1</cim:Increments.width>
     </cim:Increments>
-<!--    <cim:StepsList rdf:ID="_StepsList1">-->
-<!--        <cim:IdentifiedObject.name>Stepslist 1</cim:IdentifiedObject.name>-->
-<!--    </cim:StepsList>-->
-<!--    <cim:Step rdf:ID="_Step1">-->
-<!--        <cim:IdentifiedObject.name>Step1</cim:IdentifiedObject.name>-->
-<!--        <cim:Step.p>123</cim:Step.p>-->
-<!--        <cim:Step.stepsList rdf:resource="#_StepsList1"/>-->
-<!--    </cim:Step>-->
-<!--    <cim:Step rdf:ID="_Step2">-->
-<!--        <cim:IdentifiedObject.name>Step2</cim:IdentifiedObject.name>-->
-<!--        <cim:Step.p>0</cim:Step.p>-->
-<!--        <cim:Step.stepsList rdf:resource="#_StepsList1"/>-->
-<!--    </cim:Step>-->
+    <cim:Controllability rdf:ID="_Controllability2">
+        <cim:IdentifiedObject.name>Controllability 2</cim:IdentifiedObject.name>
+<!--        <cim:Controllability.increments rdf:resource="#_Increments1"/>-->
+                <cim:Controllability.stepsList rdf:resource="#_StepsList1"/>
+    </cim:Controllability>
+    <cim:StepsList rdf:ID="_StepsList1">
+        <cim:IdentifiedObject.name>Stepslist 1</cim:IdentifiedObject.name>
+    </cim:StepsList>
+    <cim:Step rdf:ID="_Step1">
+        <cim:IdentifiedObject.name>Step1</cim:IdentifiedObject.name>
+        <cim:Step.p>123</cim:Step.p>
+        <cim:Step.stepsList rdf:resource="#_StepsList1"/>
+    </cim:Step>
+    <cim:Step rdf:ID="_Step2">
+        <cim:IdentifiedObject.name>Step2</cim:IdentifiedObject.name>
+        <cim:Step.p>0</cim:Step.p>
+        <cim:Step.stepsList rdf:resource="#_StepsList1"/>
+    </cim:Step>
 </rdf:RDF>
