@@ -1,0 +1,25 @@
+PREFIX cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
+PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+
+SELECT ?cr ?g ?name (SUM(?value) as ?sum) ?gradientPlus ?gradientMinus
+FROM <https://example.com/#RD_EQ>
+FROM <https://example.com/#RD_EQ_G>
+<RD_PD>
+ WHERE {
+
+    ?cr     cim:IdentifiedObject.name ?name ;
+            a cim:ControllableResource ;
+            ^cim:RedispatchableResource.controllableResource? ?base .
+            OPTIONAL { ?cr cim:ControllableResource.maxGradientPlus ?gradientPlus .}
+            OPTIONAL {?cr cim:ControllableResource.maxGradientMinus ?gradientMinus . }
+    GRAPH ?g {
+        ?base   ^cim:PlanningValue.powerSystemResource ?planningValue .
+        ?planningValue cim:ActivePowerPlanningValue.value ?value ;
+                        cim:PlanningValue.kind "PROD" .
+    }
+}
+    GROUP BY ?g ?cr ?name ?gradientPlus ?gradientMinus
