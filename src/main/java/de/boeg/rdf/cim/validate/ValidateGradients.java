@@ -4,8 +4,10 @@ import de.boeg.rdf.cim.ControllableResource;
 import de.boeg.rdf.cim.registers.ExampleDataRegister;
 import de.boeg.rdf.cim.registers.RDFSRegister;
 import de.boeg.rdf.cim.typed.RDFS2DatatypeMapGenerator;
+import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
+import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
@@ -35,35 +37,51 @@ public class ValidateGradients {
         typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdPd.rdfs.path));
 
         var dataSet = DatasetFactory.create();
-        addData(dataSet, rdEq, typeMap, URI_BASE + "RD_EQ", graphRegister, null);
-        addData(dataSet, rdEqG, typeMap, URI_BASE + "RD_EQ_G", graphRegister, null);
-        addData(dataSet, rdPd, typeMap, URI_BASE + "RD_PD/" + Instant.now(), graphRegister, null);
-        addData(dataSet, rdPd, typeMap, URI_BASE + "RD_PD/" + Instant.now().plusSeconds(900), graphRegister, "data/RD_PD_Example2.xml");
+        addData(dataSet, rdEq, typeMap, graphRegister);
+        addData(dataSet, rdEqG, typeMap, graphRegister);
+        addData(dataSet, rdPd, typeMap, graphRegister);
+        addData(dataSet, ExampleDataRegister.MINIGRID_RD_PD2, typeMap, graphRegister);
 
         var controllableResources = queryTimeSeries(dataSet, graphRegister);
 
         validateGradients(controllableResources);
     }
 
-    private static void addData(Dataset dataset, ExampleDataRegister register, Map<Node, XSDDatatype> typeMap, String graphName, Map<RDFSRegister, Set<String>> graphRegister, String pathOverride) {
+    private static void addData(Dataset dataset, ExampleDataRegister register, Map<Node, XSDDatatype> typeMap, Map<RDFSRegister, Set<String>> graphRegister) {
         var dataGraph = GraphFactory.createDefaultGraph();
-        if (pathOverride != null) {
-            ShaclValidationExample.importFile(pathOverride, dataGraph, typeMap);
-        } else {
-            ShaclValidationExample.importFile(register.path, dataGraph, typeMap);
-        }
+        ShaclValidationExample.importFile(register.path, dataGraph, typeMap);
+
         var graphsOfRdfs = graphRegister.computeIfAbsent(register.rdfs, t -> new HashSet<>());
-        graphsOfRdfs.add(graphName);
-        dataset.addNamedModel(graphName, ModelFactory.createModelForGraph(dataGraph));
+        var graphname = URI_BASE + register.rdfs.name();
+
+        if (register.rdfs.equals(RDFSRegister.RD_PD)) {
+            var scenarioTime = getScenarioTime(dataGraph);
+            graphname = graphname + "/" + scenarioTime;
+        }
+
+        graphsOfRdfs.add(graphname);
+        dataset.addNamedModel(graphname, ModelFactory.createModelForGraph(dataGraph));
         dataset.commit();
+    }
+
+    @SneakyThrows
+    private static Instant getScenarioTime(Graph graph) {
+        var queryStr = new String(ClassLoader.getSystemResourceAsStream("generation/scenario-time.sparql").readAllBytes());
+        var query = QueryFactory.create(queryStr);
+        try (var execution = QueryExecutionFactory.create(query, ModelFactory.createModelForGraph(graph))) {
+            var resultSet = execution.execSelect();
+            if (!resultSet.hasNext()) {
+                throw new IllegalArgumentException("Graph header does not contain scenario time");
+            }
+            return Instant.parse(resultSet.next().getLiteral("scenarioTime").getString() + "Z");
+        }
     }
 
     private static Collection<ControllableResource> queryTimeSeries(Dataset dataset, Map<RDFSRegister, Set<String>> graphRegister) throws IOException {
         var query = prepareQuery(graphRegister);
-        ResultSet resultSet;
         Map<String, ControllableResource> controllableResourceMap = new HashMap<>();
         try (var execution = QueryExecutionFactory.create(query, dataset)) {
-            resultSet = execution.execSelect();
+            var resultSet = execution.execSelect();
             while (resultSet != null && resultSet.hasNext()) {
                 var typePropertyRow = resultSet.next();
                 var id = typePropertyRow.get("cr").asResource().getURI();

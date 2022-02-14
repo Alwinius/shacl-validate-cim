@@ -1,0 +1,9 @@
+PREFIX md: <http://iec.ch/TC57/61970-552/ModelDescription/1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+
+SELECT ?scenarioTime
+WHERE {
+    ?s rdf:type md:FullModel .
+    ?s md:Model.scenarioTime ?scenarioTime .
+}
