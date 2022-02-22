@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:CIM="http://iec.ch/TC57/2013/CIM-schema-cim16#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://iec.ch/TC57/2013/CIM-schema-cim16" xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#"  xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#" >
+<rdf:RDF xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://iec.ch/TC57/2013/CIM-schema-cim16" xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#" >
 	 <rdf:Description rdf:about="#Package_RedispatchPlanningDataProfile">
 	<rdfs:label xml:lang="en">RedispatchPlanningDataProfile</rdfs:label>
 	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
@@ -262,6 +262,164 @@
 	<rdfs:label xml:lang="en">none</rdfs:label>
 	<rdfs:comment  rdf:parseType="Literal">No multiplier or equivalently multiply by 1.</rdfs:comment>
 	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#CostPlanningValue">
+	<rdfs:label xml:lang="en">CostPlanningValue</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#PlanningValue"/>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchPlanningDataProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#CostPlanningValue.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#CostPlanningValue"/>
+	<cims:dataType rdf:resource="#Money"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Money">
+	<rdfs:label xml:lang="en">Money</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Amount of money.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Money.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#Money"/>
+	<rdfs:range rdf:resource="#Currency"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#currency">EUR</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Currency">
+	<rdfs:label xml:lang="en">Currency</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Monetary currencies. Apologies for this list not being exhaustive.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Currency.USD">
+	<rdfs:label xml:lang="en">USD</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">US dollar</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.EUR">
+	<rdfs:label xml:lang="en">EUR</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">European euro</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.AUD">
+	<rdfs:label xml:lang="en">AUD</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Australian dollar</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.CAD">
+	<rdfs:label xml:lang="en">CAD</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Canadian dollar</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.CHF">
+	<rdfs:label xml:lang="en">CHF</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Swiss francs</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.CNY">
+	<rdfs:label xml:lang="en">CNY</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Chinese yuan renminbi</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.DKK">
+	<rdfs:label xml:lang="en">DKK</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Danish crown</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.GBP">
+	<rdfs:label xml:lang="en">GBP</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">British pound</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.JPY">
+	<rdfs:label xml:lang="en">JPY</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Japanese yen</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.NOK">
+	<rdfs:label xml:lang="en">NOK</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Norwegian crown</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.RUR">
+	<rdfs:label xml:lang="en">RUR</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Russian ruble</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.SEK">
+	<rdfs:label xml:lang="en">SEK</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Swedish crown</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.INR">
+	<rdfs:label xml:lang="en">INR</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">India rupees</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Currency.other">
+	<rdfs:label xml:lang="en">other</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Another type of currency.</rdfs:comment>
+	<rdf:type rdf:resource="#Currency"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Money.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#Money"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">none</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Money.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#Money"/>
+	<cims:dataType rdf:resource="#Decimal"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Decimal">
+	<rdfs:label xml:lang="en">Decimal</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Decimal is the base-10 notational system for representing real numbers.</rdfs:comment>
+<cims:stereotype>Primitive</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#CostPlanningValue.denomination">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">denomination</rdfs:label>
+	<rdfs:domain rdf:resource="#CostPlanningValue"/>
+	<rdfs:range rdf:resource="#Denomination"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Denomination">
+	<rdfs:label xml:lang="en">Denomination</rdfs:label>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchPlanningDataProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Denomination.perMW">
+	<rdfs:label xml:lang="en">perMW</rdfs:label>
+	<rdf:type rdf:resource="#Denomination"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Denomination.perPiece">
+	<rdfs:label xml:lang="en">perPiece</rdfs:label>
+	<rdf:type rdf:resource="#Denomination"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Denomination.perHour">
+	<rdfs:label xml:lang="en">perHour</rdfs:label>
+	<rdf:type rdf:resource="#Denomination"/>
 </rdf:Description>
 	 <rdf:Description rdf:about="#PercentPlanningValue">
 	<rdfs:label xml:lang="en">PercentPlanningValue</rdfs:label>

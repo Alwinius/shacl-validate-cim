@@ -20,12 +20,14 @@
         <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
         <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.SPITZ"/>
         <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
+        <cim:RedispatchableResource.maStRNo>234523234</cim:RedispatchableResource.maStRNo>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
         <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
         <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.PAUSCHAL"/>
         <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
+        <cim:RedispatchableResource.maStRNo>23523234</cim:RedispatchableResource.maStRNo>
     </cim:RedispatchableResource>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
         <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
@@ -40,25 +42,63 @@
         <cim:ControllableResource.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
         <cim:ControllableResource.connectingGridOperator rdf:resource="#_connOperator1"/>
         <cim:ControllableResource.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
-        <cim:ControllableResource.controlGroup rdf:resource="#_CG1"/>
         <cim:ControllableResource.toleranceMode>true</cim:ControllableResource.toleranceMode>
         <cim:ControllableResource.requestKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RequestKind.DELTA"/>
+        <cim:ControllableResource.compensationKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CompensationKind.EEG"/>
+        <cim:ControllableResource.orderingGridOperator rdf:resource="#_orderingGridOperator2"/>
+    </cim:ControllableResource>
+    <cim:ControllableResource rdf:ID="_controller2">
+        <cim:IdentifiedObject.name>Controller2</cim:IdentifiedObject.name>
+        <cim:ControllableResource.compensationKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CompensationKind.KWKG"/>
+        <cim:ControllableResource.manager>Man Ager</cim:ControllableResource.manager>
+        <cim:ControllableResource.balancingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#BalancingModel.PROGNOSE"/>
+        <cim:ControllableResource.toleranceMode>false</cim:ControllableResource.toleranceMode>
+        <cim:ControllableResource.connectingGridOperator rdf:resource="#_connOperator2"/>
+        <cim:ControllableResource.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators2"/>
+        <cim:ControllableResource.affectedGridOperatorsList rdf:resource="#_affOperators2"/>
+        <cim:ControllableResource.requestKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RequestKind.SOLLWERT"/>
+        <cim:ControllableResource.orderingGridOperator rdf:resource="#_orderingGridOperator1"/>
     </cim:ControllableResource>
     <cim:AffectedGridOperatorsList rdf:ID="_affOperators1">
         <cim:IdentifiedObject.name>AffectedGridOperatorsList 1</cim:IdentifiedObject.name>
     </cim:AffectedGridOperatorsList>
+    <cim:AffectedGridOperatorsList rdf:ID="_affOperators2">
+        <cim:IdentifiedObject.name>AffectedGridOperatorsList 2</cim:IdentifiedObject.name>
+    </cim:AffectedGridOperatorsList>
     <cim:AdditionalAffectedGridOperatorsList rdf:ID="_addtlOperators1">
         <cim:IdentifiedObject.name>AdditionalAffectedGridOperatorsList 1</cim:IdentifiedObject.name>
+    </cim:AdditionalAffectedGridOperatorsList>
+    <cim:AdditionalAffectedGridOperatorsList rdf:ID="_addtlOperators2">
+        <cim:IdentifiedObject.name>AdditionalAffectedGridOperatorsList 2</cim:IdentifiedObject.name>
     </cim:AdditionalAffectedGridOperatorsList>
     <cim:ConnectingGridOperator rdf:ID="_connOperator1">
         <cim:IdentifiedObject.name>ConnectingGridOperator 1</cim:IdentifiedObject.name>
         <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.GS1"/>
         <cim:GridOperator.id>5646564656465</cim:GridOperator.id>
     </cim:ConnectingGridOperator>
+    <cim:ConnectingGridOperator rdf:ID="_connOperator2">
+        <cim:IdentifiedObject.name>ConnectingGridOperator 2</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.GS1"/>
+        <cim:GridOperator.id>5646564656466</cim:GridOperator.id>
+    </cim:ConnectingGridOperator>
+    <cim:GridOperatorsListEntry rdf:ID="_op1-2">
+        <cim:IdentifiedObject.name>AffectedGridOperator 1</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.NDE"/>
+        <cim:GridOperator.id>5646564656466</cim:GridOperator.id>
+        <cim:GridOperatorsListEntry.order>1</cim:GridOperatorsListEntry.order>
+        <cim:GridOperatorsListEntry.affectedGridOperatorsList rdf:resource="#_affOperators2"/>
+    </cim:GridOperatorsListEntry>
+    <cim:GridOperatorsListEntry rdf:ID="_op2-2">
+        <cim:IdentifiedObject.name>AffectedGridOperator 2</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.NDE"/>
+        <cim:GridOperator.id>56465645646</cim:GridOperator.id>
+        <cim:GridOperatorsListEntry.order>2</cim:GridOperatorsListEntry.order>
+        <cim:GridOperatorsListEntry.affectedGridOperatorsList rdf:resource="#_affOperators2"/>
+    </cim:GridOperatorsListEntry>
     <cim:GridOperatorsListEntry rdf:ID="_op1">
         <cim:IdentifiedObject.name>GridOperator 1</cim:IdentifiedObject.name>
         <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.NDE"/>
-        <cim:GridOperator.id>007</cim:GridOperator.id>
+        <cim:GridOperator.id>5646564656465</cim:GridOperator.id>
         <cim:GridOperatorsListEntry.order>1</cim:GridOperatorsListEntry.order>
         <cim:GridOperatorsListEntry.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
     </cim:GridOperatorsListEntry>
@@ -69,6 +109,16 @@
         <cim:GridOperatorsListEntry.order>1</cim:GridOperatorsListEntry.order>
         <cim:GridOperatorsListEntry.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
     </cim:GridOperatorsListEntry>
+    <cim:OrderingGridOperator rdf:ID="_orderingGridOperator1">
+        <cim:IdentifiedObject.name>OrderingGridOperator 1</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.NDE"/>
+        <cim:GridOperator.id>03424008</cim:GridOperator.id>
+    </cim:OrderingGridOperator>
+    <cim:OrderingGridOperator rdf:ID="_orderingGridOperator2">
+        <cim:IdentifiedObject.name>OrderingGridOperator 2</cim:IdentifiedObject.name>
+        <cim:GridOperator.codingScheme rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#CodingScheme.NDE"/>
+        <cim:GridOperator.id>03424007</cim:GridOperator.id>
+    </cim:OrderingGridOperator>
     <cim:MarketLocationProduction rdf:ID="_MarketLocationProduction1">
         <cim:IdentifiedObject.name>MarketLocationProduction 1</cim:IdentifiedObject.name>
         <cim:MarketLocation.meterLocation rdf:resource="#_MeterLocation1"/>
@@ -81,16 +131,4 @@
         <cim:Supplier.id>0325230325233</cim:Supplier.id>
         <cim:IdentifiedObject.name>abc</cim:IdentifiedObject.name>
     </cim:Supplier>
-    <cim:ControlGroup rdf:ID="_CG1">
-        <cim:IdentifiedObject.name>Controlgroup 1</cim:IdentifiedObject.name>
-        <cim:ControlGroup.requestTime>23</cim:ControlGroup.requestTime>
-    </cim:ControlGroup>
-    <cim:Cluster rdf:ID="_Cluster1">
-        <cim:IdentifiedObject.name>Cluster 1</cim:IdentifiedObject.name>
-        <cim:Cluster.controlGroup rdf:resource="#_CG1"/>
-        <cim:Cluster.globalCluster rdf:resource="#_Cluster2"/>
-    </cim:Cluster>
-    <cim:Cluster rdf:ID="_Cluster2">
-        <cim:IdentifiedObject.name>Cluster 2</cim:IdentifiedObject.name>
-    </cim:Cluster>
 </rdf:RDF>

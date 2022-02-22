@@ -31,14 +31,6 @@
         <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
-    <cim:RedispatchableResource rdf:ID="_otherTR2">
-<!--        <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>-->
-<!--                <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
-        <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
-        <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
-        <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
-        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
-    </cim:RedispatchableResource>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
         <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
         <cim:Storage.netNominalPConsumption>123.6</cim:Storage.netNominalPConsumption>
@@ -80,6 +72,8 @@
         <cim:ControllableResource.controllability rdf:resource="#_Controllability2"/>
         <cim:ControllableResource.maxGradientPlus>12</cim:ControllableResource.maxGradientPlus>
         <cim:ControllableResource.maxGradientMinus>32</cim:ControllableResource.maxGradientMinus>
+        <cim:ControllableResource.energySource>wind</cim:ControllableResource.energySource>
+        <cim:ControllableResource.timeToRealisation>43</cim:ControllableResource.timeToRealisation>
     </cim:ControllableResource>
     <cim:ControlArea rdf:ID="_ControlArea">
         <cim:IdentifiedObject.name>10YDE-EON------1</cim:IdentifiedObject.name>

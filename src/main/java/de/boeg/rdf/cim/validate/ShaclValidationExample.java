@@ -59,6 +59,7 @@ public class ShaclValidationExample {
         var shapesManualRdEqG = ShaclReader.readFromFile(rdEqG.rdfs.rulesPath);
         var shapesManualRdEq = ShaclReader.readFromFile(rdEq.rdfs.rulesPath);
         var shapesCombined = ShaclReader.readFromFile("rules/cross-profile.ttl");
+        var shapesUC1Masterdata = ShaclReader.readFromFile("rules/initial-masterdata-enhanced.ttl");
 
         RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGeneratedRdEqG.getGraph()), RDFFormat.TURTLE_PRETTY);
         doBenchmark(typeMap, shapesManualRdEqG, List.of(rdEqG.path));
@@ -66,6 +67,7 @@ public class ShaclValidationExample {
         doBenchmark(typeMap, shapesGeneratedRdEqG, List.of(rdEqG.path));
         doBenchmark(typeMap, shapesGeneratedRdEq, List.of(rdEq.path));
         doBenchmark(typeMap, shapesCombined, List.of(rdEqG.path, rdEq.path, rdPd.path));
+        doBenchmark(typeMap, shapesUC1Masterdata, List.of(rdEqG.path, rdEq.path, rdPd.path));
     }
 
     public static void importFile(String dataFile1, Graph dataGraph, Map<Node, XSDDatatype> typeMap) {

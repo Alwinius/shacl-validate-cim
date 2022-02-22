@@ -1,1114 +1,1145 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
-    xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" > 
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAh">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Apparent energy in volt ampere hours.</rdfs:comment>
-    <rdfs:label xml:lang="en">VAh</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.controlArea">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControlArea.controllableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControlArea"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">controlArea</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <cims:isFixed>M</cims:isFixed>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#WindGeneratingUnit.windGenUnitModel">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#WindGeneratingUnit"/>
-    <rdfs:label xml:lang="en">windGenUnitModel</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.generatingUnit">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit.redispatchableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">generatingUnit</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdfs:label xml:lang="en">Seconds</rdfs:label>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment rdf:parseType="Literal">Time, in seconds.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <cims:isFixed>M</cims:isFixed>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.rad">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Plane angle in radians.</rdfs:comment>
-    <rdfs:label xml:lang="en">rad</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.entsoeURI">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <rdfs:label xml:lang="en">entsoeURI</rdfs:label>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:comment rdf:parseType="Literal">Profile URI defined by ENTSO-E and used in the Model Exchange header.  It uniquely identifies the Profile and its version. The last two elements in the URI (http://entsoe.eu/CIM/StateVariables/yy/zzz) indicate major and minor versions where: 
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xml:base="http://iec.ch/TC57/2013/CIM-schema-cim16" xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#" >
+	 <rdf:Description rdf:about="#Package_RedispatchEquipmentProfile">
+	<rdfs:label xml:lang="en">RedispatchEquipmentProfile</rdfs:label>
+	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource">
+	<rdfs:label xml:lang="en">ControllableResource</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchEquipmentProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.energySource">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">energySource</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.timeToRealisation">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">timeToRealisation</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Seconds">
+	<rdfs:label xml:lang="en">Seconds</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Time, in seconds.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Seconds.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#Seconds"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdfs:comment  rdf:parseType="Literal">Time, in seconds</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Float">
+	<rdfs:label xml:lang="en">Float</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">A floating point number. The range is unspecified and not limited.</rdfs:comment>
+<cims:stereotype>Primitive</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Seconds.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#Seconds"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">s</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol">
+	<rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">The units defined for usage in the CIM.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.VA">
+	<rdfs:label xml:lang="en">VA</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Apparent power in volt ampere.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.W">
+	<rdfs:label xml:lang="en">W</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Active power in watt.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.VAr">
+	<rdfs:label xml:lang="en">VAr</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Reactive power in volt ampere reactive.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.VAh">
+	<rdfs:label xml:lang="en">VAh</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Apparent energy in volt ampere hours.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.Wh">
+	<rdfs:label xml:lang="en">Wh</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Real energy in what hours.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.VArh">
+	<rdfs:label xml:lang="en">VArh</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Reactive energy in volt ampere reactive hours.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.V">
+	<rdfs:label xml:lang="en">V</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Voltage in volt.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.ohm">
+	<rdfs:label xml:lang="en">ohm</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Resistance in ohm.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.A">
+	<rdfs:label xml:lang="en">A</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Current in ampere.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.F">
+	<rdfs:label xml:lang="en">F</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Capacitance in farad.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.H">
+	<rdfs:label xml:lang="en">H</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Inductance in henry.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.degC">
+	<rdfs:label xml:lang="en">degC</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Relative temperature in degrees Celsius. In the SI unit system the symbol is ºC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using ºC is the special character º is difficult to manage in software.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.s">
+	<rdfs:label xml:lang="en">s</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Time in seconds.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.min">
+	<rdfs:label xml:lang="en">min</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Time in minutes.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.h">
+	<rdfs:label xml:lang="en">h</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Time in hours.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.deg">
+	<rdfs:label xml:lang="en">deg</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Plane angle in degrees.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.rad">
+	<rdfs:label xml:lang="en">rad</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Plane angle in radians.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.J">
+	<rdfs:label xml:lang="en">J</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Energy in joule.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.N">
+	<rdfs:label xml:lang="en">N</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Force in newton.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.S">
+	<rdfs:label xml:lang="en">S</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Conductance in siemens.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.none">
+	<rdfs:label xml:lang="en">none</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Dimension less quantity, e.g. count, per unit, etc.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.Hz">
+	<rdfs:label xml:lang="en">Hz</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Frequency in hertz.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.g">
+	<rdfs:label xml:lang="en">g</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Mass in gram.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.Pa">
+	<rdfs:label xml:lang="en">Pa</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Pressure in pascal (n/m2).</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.m">
+	<rdfs:label xml:lang="en">m</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Length in meter.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.m2">
+	<rdfs:label xml:lang="en">m2</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Area in square meters.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitSymbol.m3">
+	<rdfs:label xml:lang="en">m3</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Volume in cubic meters.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitSymbol"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Seconds.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#Seconds"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">none</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier">
+	<rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">The unit multipliers defined for the CIM.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.p">
+	<rdfs:label xml:lang="en">p</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Pico 10**-12.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.n">
+	<rdfs:label xml:lang="en">n</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Nano 10**-9.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.micro">
+	<rdfs:label xml:lang="en">micro</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Micro 10**-6.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.m">
+	<rdfs:label xml:lang="en">m</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Milli 10**-3.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.c">
+	<rdfs:label xml:lang="en">c</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Centi 10**-2.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.d">
+	<rdfs:label xml:lang="en">d</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Deci 10**-1.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.k">
+	<rdfs:label xml:lang="en">k</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Kilo 10**3.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.M">
+	<rdfs:label xml:lang="en">M</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Mega 10**6.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.G">
+	<rdfs:label xml:lang="en">G</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Giga 10**9.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.T">
+	<rdfs:label xml:lang="en">T</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Tera 10**12.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#UnitMultiplier.none">
+	<rdfs:label xml:lang="en">none</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">No multiplier or equivalently multiply by 1.</rdfs:comment>
+	<rdf:type rdf:resource="#UnitMultiplier"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.minDownTime">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">minDownTime</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.minOperatingP">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">minOperatingP</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ActivePower">
+	<rdfs:label xml:lang="en">ActivePower</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ActivePower.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#ActivePower"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ActivePower.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#ActivePower"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ActivePower.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#ActivePower"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">M</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.minUpTime">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">minUpTime</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.minTStartupCold">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">minTStartupCold</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.minTStartupWarm">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">minTStartupWarm</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.shutdownTime">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">shutdownTime</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.rampUpTimeCold">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">rampUpTimeCold</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.rampUpTimeWarm">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">rampUpTimeWarm</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#Seconds"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.maxGradientPlus">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">maxGradientPlus</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#PowerGradient"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient">
+	<rdfs:label xml:lang="en">PowerGradient</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Inductance per unit of length.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#PowerGradient"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#PowerGradient"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">W</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#PowerGradient"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">M</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient.denominatorUnit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">denominatorUnit</rdfs:label>
+	<rdfs:domain rdf:resource="#PowerGradient"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">h</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerGradient.denominatorMultiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">denominatorMultiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#PowerGradient"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">none</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.maxGradientMinus">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">maxGradientMinus</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<cims:dataType rdf:resource="#PowerGradient"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.controllableResource">
+	<rdfs:label xml:lang="en">controllableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<rdfs:range rdf:resource="#ControllableResource"/>
+	<cims:inverseRoleName rdf:resource="#ControllableResource.redispatchableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.redispatchableResource">
+	<rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<rdfs:range rdf:resource="#RedispatchableResource"/>
+	<cims:inverseRoleName rdf:resource="#RedispatchableResource.controllableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.controlArea">
+	<rdfs:label xml:lang="en">controlArea</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<rdfs:range rdf:resource="#ControlArea"/>
+	<cims:inverseRoleName rdf:resource="#ControlArea.controllableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControlArea.controllableResource">
+	<rdfs:label xml:lang="en">controllableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#ControlArea"/>
+	<rdfs:range rdf:resource="#ControllableResource"/>
+	<cims:inverseRoleName rdf:resource="#ControllableResource.controlArea"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.controllability">
+	<rdfs:label xml:lang="en">controllability</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<rdfs:range rdf:resource="#Controllability"/>
+	<cims:inverseRoleName rdf:resource="#Controllability.controllableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Controllability.controllableResource">
+	<rdfs:label xml:lang="en">controllableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#Controllability"/>
+	<rdfs:range rdf:resource="#ControllableResource"/>
+	<cims:inverseRoleName rdf:resource="#ControllableResource.controllability"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControllableResource.controlArea">
+	<rdfs:label xml:lang="en">controlArea</rdfs:label>
+	<rdfs:domain rdf:resource="#ControllableResource"/>
+	<rdfs:range rdf:resource="#ControlArea"/>
+	<cims:inverseRoleName rdf:resource="#ControlArea.controllableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#ControlArea.controllableResource">
+	<rdfs:label xml:lang="en">controllableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#ControlArea"/>
+	<rdfs:range rdf:resource="#ControllableResource"/>
+	<cims:inverseRoleName rdf:resource="#ControllableResource.controlArea"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource">
+	<rdfs:label xml:lang="en">RedispatchableResource</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#Equipment"/>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchEquipmentProfile"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.decommissionDateProvisional">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">decommissionDateProvisional</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<cims:dataType rdf:resource="#Date"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Date">
+	<rdfs:label xml:lang="en">Date</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
+<cims:stereotype>Primitive</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.decommissionDateFinal">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">decommissionDateFinal</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<cims:dataType rdf:resource="#Date"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.netNominalPProduction">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">netNominalPProduction</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.netBottleneckPProduction">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">netBottleneckPProduction</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.grossNominalP">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">grossNominalP</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.generatingUnit">
+	<rdfs:label xml:lang="en">generatingUnit</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<rdfs:range rdf:resource="#GeneratingUnit"/>
+	<cims:inverseRoleName rdf:resource="#GeneratingUnit.redispatchableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#GeneratingUnit.redispatchableResource">
+	<rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#GeneratingUnit"/>
+	<rdfs:range rdf:resource="#RedispatchableResource"/>
+	<cims:inverseRoleName rdf:resource="#RedispatchableResource.generatingUnit"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.storage">
+	<rdfs:label xml:lang="en">storage</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<rdfs:range rdf:resource="#Storage"/>
+	<cims:inverseRoleName rdf:resource="#Storage.redispatchableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.redispatchableResource">
+	<rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<rdfs:range rdf:resource="#RedispatchableResource"/>
+	<cims:inverseRoleName rdf:resource="#RedispatchableResource.storage"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#RedispatchableResource.generatingUnit">
+	<rdfs:label xml:lang="en">generatingUnit</rdfs:label>
+	<rdfs:domain rdf:resource="#RedispatchableResource"/>
+	<rdfs:range rdf:resource="#GeneratingUnit"/>
+	<cims:inverseRoleName rdf:resource="#GeneratingUnit.redispatchableResource"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#GeneratingUnit.redispatchableResource">
+	<rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
+	<rdfs:domain rdf:resource="#GeneratingUnit"/>
+	<rdfs:range rdf:resource="#RedispatchableResource"/>
+	<cims:inverseRoleName rdf:resource="#RedispatchableResource.generatingUnit"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion">
+	<rdfs:label xml:lang="en">RedispatchEquipmentProfileVersion</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Version details.</rdfs:comment>
+<cims:stereotype>Entsoe</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_RedispatchEquipmentProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.baseUML">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">baseUML</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">iec61970cim16v28_iec61968cim12v08_iec62325cim03v01a</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Base UML provided by CIM model manager.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#String">
+	<rdfs:label xml:lang="en">String</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
+<cims:stereotype>Primitive</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.baseURI">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">baseURI</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.soptim.net/RES/RedispatchEquipmentProfile/1/1#</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. It is given for information only and to identify the closest IEC profile to which this CGMES profile is based on.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.date">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">date</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#Date"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-01-25</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Profile creation date
+Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.differenceModelURI">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">differenceModelURI</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://iec.ch/TC57/61970-552/DifferenceModel/1#</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Difference model URI defined by IEC 61970-552. </rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.entsoeUML">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">entsoeUML</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">entsoe_v2.4.15</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">UML provided by ENTSO-E.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.entsoeURI">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">entsoeURI</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://entsoe.eu/CIM/RedispatchEquipment/4/1</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Profile URI defined by ENTSO-E and used in the Model Exchange header.  It uniquely identifies the Profile and its version. The last two elements in the URI (http://entsoe.eu/CIM/StateVariables/yy/zzz) indicate major and minor versions where: 
 - yy - indicates a major version;
 - zzz - indicates a minor version. </rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:isFixed>http://entsoe.eu/CIM/RedispatchEquipment/4/1</cims:isFixed>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.usableEnergyContent">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">usableEnergyContent</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#WindGeneratingUnit">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Production"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit"/>
-    <rdfs:label xml:lang="en">WindGeneratingUnit</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.netBottleneckPConsumption">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">netBottleneckPConsumption</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.W">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Active power in watt.</rdfs:comment>
-    <rdfs:label xml:lang="en">W</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VA">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Apparent power in volt ampere.</rdfs:comment>
-    <rdfs:label xml:lang="en">VA</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">StepsList</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:isFixed>none</cims:isFixed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.netNominalPProduction">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">netNominalPProduction</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.increments">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.controllability"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:label xml:lang="en">increments</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability">
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-    <rdfs:label xml:lang="en">Controllability</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.micro">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Micro 10**-6.</rdfs:comment>
-    <rdfs:label xml:lang="en">micro</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed>Wh</cims:isFixed>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.h">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Time in hours.</rdfs:comment>
-    <rdfs:label xml:lang="en">h</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minUpTime">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">minUpTime</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.degC">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Relative temperature in degrees Celsius. In the SI unit system the symbol is ºC. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius form coulomb the symbol used in the UML is degC. Reason for not using ºC is the special character º is difficult to manage in software.</rdfs:comment>
-    <rdfs:label xml:lang="en">degC</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Length.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Length"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:isFixed>k</cims:isFixed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.netBottleneckPProduction">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">netBottleneckPProduction</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.controllableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.controllability"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:label xml:lang="en">controllableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.decommissionDateFinal">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Date"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">decommissionDateFinal</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Date">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdfs:comment rdf:parseType="Literal">Date as "yyyy-mm-dd", which conforms with ISO 8601. UTC time zone is specified as "yyyy-mm-ddZ". A local timezone relative UTC is specified as "yyyy-mm-dd(+/-)hh:mm".</rdfs:comment>
-    <rdfs:label xml:lang="en">Date</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.max">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
-    <rdfs:label xml:lang="en">max</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.controllability">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.stepsList"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList"/>
-    <rdfs:label xml:lang="en">controllability</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.deg">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Plane angle in degrees.</rdfs:comment>
-    <rdfs:label xml:lang="en">deg</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.step">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step.stepsList"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList"/>
-    <rdfs:label xml:lang="en">step</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:comment rdf:parseType="Literal">Time, in seconds</rdfs:comment>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.G">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Giga 10**9.</rdfs:comment>
-    <rdfs:label xml:lang="en">G</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.description">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment rdf:parseType="Literal">The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">description</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion">
-    <cims:stereotype>Entsoe</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_RedispatchEquipmentProfile"/>
-    <rdfs:label xml:lang="en">RedispatchEquipmentProfileVersion</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Version details.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic">
-    <cims:stereotype>Entsoe</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">energyIdentCodeEic</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.modelDescriptionURI">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">modelDescriptionURI</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://iec.ch/TC57/61970-552/ModelDescription/1#</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">Model Description URI defined by IEC 61970-552. </rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.namespaceRDF">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">namespaceRDF</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://www.w3.org/1999/02/22-rdf-syntax-ns#</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">RDF namespace.  </rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.namespaceUML">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">namespaceUML</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://iec.ch/TC57/2013/CIM-schema-cim16#</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">CIM UML namespace. </rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.shortName">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">shortName</rdfs:label>
+	<rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RD_EQ</cims:isFixed>
+	<rdfs:comment  rdf:parseType="Literal">The short name of the profile used in profile documentation.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Package_Controllability">
+	<rdfs:label xml:lang="en">Controllability</rdfs:label>
+	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Controllability">
+	<rdfs:label xml:lang="en">Controllability</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Controllability"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#StepsList.controllability">
+	<rdfs:label xml:lang="en">controllability</rdfs:label>
+	<rdfs:domain rdf:resource="#StepsList"/>
+	<rdfs:range rdf:resource="#Controllability"/>
+	<cims:inverseRoleName rdf:resource="#Controllability.stepsList"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Controllability.stepsList">
+	<rdfs:label xml:lang="en">stepsList</rdfs:label>
+	<rdfs:domain rdf:resource="#Controllability"/>
+	<rdfs:range rdf:resource="#StepsList"/>
+	<cims:inverseRoleName rdf:resource="#StepsList.controllability"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Increments.controllability">
+	<rdfs:label xml:lang="en">controllability</rdfs:label>
+	<rdfs:domain rdf:resource="#Increments"/>
+	<rdfs:range rdf:resource="#Controllability"/>
+	<cims:inverseRoleName rdf:resource="#Controllability.increments"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Controllability.increments">
+	<rdfs:label xml:lang="en">increments</rdfs:label>
+	<rdfs:domain rdf:resource="#Controllability"/>
+	<rdfs:range rdf:resource="#Increments"/>
+	<cims:inverseRoleName rdf:resource="#Increments.controllability"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Increments">
+	<rdfs:label xml:lang="en">Increments</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Controllability"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Increments.width">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">width</rdfs:label>
+	<rdfs:domain rdf:resource="#Increments"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Increments.min">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">min</rdfs:label>
+	<rdfs:domain rdf:resource="#Increments"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Increments.max">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">max</rdfs:label>
+	<rdfs:domain rdf:resource="#Increments"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Step">
+	<rdfs:label xml:lang="en">Step</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Controllability"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Step.p">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">p</rdfs:label>
+	<rdfs:domain rdf:resource="#Step"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Step.stepsList">
+	<rdfs:label xml:lang="en">stepsList</rdfs:label>
+	<rdfs:domain rdf:resource="#Step"/>
+	<rdfs:range rdf:resource="#StepsList"/>
+	<cims:inverseRoleName rdf:resource="#StepsList.step"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
+	<cims:AssociationUsed>Yes</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#StepsList.step">
+	<rdfs:label xml:lang="en">step</rdfs:label>
+	<rdfs:domain rdf:resource="#StepsList"/>
+	<rdfs:range rdf:resource="#Step"/>
+	<cims:inverseRoleName rdf:resource="#Step.stepsList"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
+	<cims:AssociationUsed>No</cims:AssociationUsed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#StepsList">
+	<rdfs:label xml:lang="en">StepsList</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Controllability"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Package_Core">
+	<rdfs:label xml:lang="en">Core</rdfs:label>
+	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#ControlArea">
+	<rdfs:label xml:lang="en">ControlArea</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Equipment">
+	<rdfs:label xml:lang="en">Equipment</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#PowerSystemResource"/>
+	<rdfs:comment  rdf:parseType="Literal">The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#GeneratingUnit">
+	<rdfs:label xml:lang="en">GeneratingUnit</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#Equipment"/>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#IdentifiedObject">
+	<rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#IdentifiedObject.description">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">description</rdfs:label>
+	<rdfs:domain rdf:resource="#IdentifiedObject"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdfs:comment  rdf:parseType="Literal">The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.energyIdentCodeEic">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">energyIdentCodeEic</rdfs:label>
+	<rdfs:domain rdf:resource="#IdentifiedObject"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:stereotype>Entsoe</cims:stereotype>
+	<rdfs:comment  rdf:parseType="Literal">The attribute is used for an exchange of the EIC code (Energy identification Code). The length of the string is 16 characters as defined by the EIC code.
 References: 
 <ul>
 	<li>Local issuing offices for EIC: <a href="https://www.entsoe.eu/publications/edi-library/links-to-eic-websites/"><font color="#0000ff"><u>https://www.entsoe.eu/publications/edi-library/links-to-eic-websites/</u></font></a> </li>
 	<li>EIC description: <a href="https://www.entsoe.eu/index.php?id=73&amp;libCat=eic"><font color="#0000ff"><u>https://www.entsoe.eu/index.php?id=73&amp;libCat=eic</u></font></a> .</li>
 </ul></rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Step.p">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step"/>
-    <rdfs:label xml:lang="en">p</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minOperatingP">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">minOperatingP</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VArh">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Reactive energy in volt ampere reactive hours.</rdfs:comment>
-    <rdfs:label xml:lang="en">VArh</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdfs:label xml:lang="en">ActivePower</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Product of RMS value of the voltage and the RMS value of the in-phase component of the current.</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.H">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Inductance in henry.</rdfs:comment>
-    <rdfs:label xml:lang="en">H</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.baseURI">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:label xml:lang="en">baseURI</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdfs:comment rdf:parseType="Literal">Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. It is given for information only and to identify the closest IEC profile to which this CGMES profile is based on.</rdfs:comment>
-    <cims:isFixed>http://www.soptim.net/RES/RedispatchEquipmentProfile/1/1#</cims:isFixed>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.namespaceUML">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <rdfs:label xml:lang="en">namespaceUML</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:comment rdf:parseType="Literal">CIM UML namespace. </rdfs:comment>
-    <cims:isFixed>http://iec.ch/TC57/2013/CIM-schema-cim16#</cims:isFixed>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.energySource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">energySource</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.ohm">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Resistance in ohm.</rdfs:comment>
-    <rdfs:label xml:lang="en">ohm</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#SolarGeneratingUnit">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Production"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit"/>
-    <rdfs:label xml:lang="en">SolarGeneratingUnit</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m3">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Volume in cubic meters.</rdfs:comment>
-    <rdfs:label xml:lang="en">m3</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Step.stepsList">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.step"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Step"/>
-    <rdfs:label xml:lang="en">stepsList</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.decommissionDateProvisional">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Date"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">decommissionDateProvisional</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.maxPStore">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">maxPStore</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.redispatchableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.storage"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Normally 0 - 100 on a defined base</rdfs:comment>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.k">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Kilo 10**3.</rdfs:comment>
-    <rdfs:label xml:lang="en">k</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core">
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-    <rdfs:label xml:lang="en">Core</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">Increments</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit.redispatchableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.generatingUnit"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit"/>
-    <rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.c">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Centi 10**-2.</rdfs:comment>
-    <rdfs:label xml:lang="en">c</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerSystemResource">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">PowerSystemResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Storage">
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-    <rdfs:label xml:lang="en">Storage</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdfs:label xml:lang="en">PowerGradient</rdfs:label>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment rdf:parseType="Literal">Inductance per unit of length.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.g">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Mass in gram.</rdfs:comment>
-    <rdfs:label xml:lang="en">g</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.min">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Time in minutes.</rdfs:comment>
-    <rdfs:label xml:lang="en">min</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.F">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Capacitance in farad.</rdfs:comment>
-    <rdfs:label xml:lang="en">F</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Production">
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-    <rdfs:label xml:lang="en">Production</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.shortName">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <rdfs:label xml:lang="en">shortName</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:comment rdf:parseType="Literal">The short name of the profile used in profile documentation.</rdfs:comment>
-    <cims:isFixed>RD_EQ</cims:isFixed>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core"/>
-    <rdfs:comment rdf:parseType="Literal">This is a root class to provide common identification for all classes needing identification and naming attributes.</rdfs:comment>
-    <rdfs:label xml:lang="en">IdentifiedObject</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.grossNominalP">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">grossNominalP</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.redispatchableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..n"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.controllableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">redispatchableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:isFixed>s</cims:isFixed>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.V">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Voltage in volt.</rdfs:comment>
-    <rdfs:label xml:lang="en">V</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.rampUpTimeCold">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">rampUpTimeCold</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.N">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Force in newton.</rdfs:comment>
-    <rdfs:label xml:lang="en">N</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.none">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">No multiplier or equivalently multiply by 1.</rdfs:comment>
-    <rdfs:label xml:lang="en">none</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.min">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
-    <rdfs:label xml:lang="en">min</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed>none</cims:isFixed>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:isFixed>none</cims:isFixed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">Controllability</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdfs:label xml:lang="en">Energy</rdfs:label>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:comment rdf:parseType="Literal">Product of the active power and time said power can be/is provided.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdfs:comment rdf:parseType="Literal">The units defined for usage in the CIM.</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitSymbol</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.none">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Dimension less quantity, e.g. count, per unit, etc.</rdfs:comment>
-    <rdfs:label xml:lang="en">none</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.maxPDischarge">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">maxPDischarge</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.width">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
-    <rdfs:label xml:lang="en">width</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_RedispatchEquipmentProfile">
-    <rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
-    <rdfs:label xml:lang="en">RedispatchEquipmentProfile</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Wh">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Real energy in what hours.</rdfs:comment>
-    <rdfs:label xml:lang="en">Wh</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.m">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Milli 10**-3.</rdfs:comment>
-    <rdfs:label xml:lang="en">m</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_RedispatchEquipmentProfile"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Equipment"/>
-    <rdfs:label xml:lang="en">RedispatchableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.differenceModelURI">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <rdfs:label xml:lang="en">differenceModelURI</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:comment rdf:parseType="Literal">Difference model URI defined by IEC 61970-552. </rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:isFixed>http://iec.ch/TC57/61970-552/DifferenceModel/1#</cims:isFixed>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.S">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Conductance in siemens.</rdfs:comment>
-    <rdfs:label xml:lang="en">S</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Storage"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Equipment"/>
-    <rdfs:label xml:lang="en">Storage</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#String">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdfs:comment rdf:parseType="Literal">A string consisting of a sequence of characters. The character encoding is UTF-8. The string length is unspecified and unlimited.</rdfs:comment>
-    <rdfs:label xml:lang="en">String</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed>W</cims:isFixed>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.date">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">date</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Profile creation date
-Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05.</rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2022-01-25</cims:isFixed>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Date"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.baseUML">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdfs:comment rdf:parseType="Literal">Base UML provided by CIM model manager.</rdfs:comment>
-    <rdfs:label xml:lang="en">baseUML</rdfs:label>
-    <cims:isFixed>iec61970cim16v28_iec61968cim12v08_iec62325cim03v01a</cims:isFixed>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Float">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <cims:stereotype>Primitive</cims:stereotype>
-    <rdfs:comment rdf:parseType="Literal">A floating point number. The range is unspecified and not limited.</rdfs:comment>
-    <rdfs:label xml:lang="en">Float</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minTStartupWarm">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">minTStartupWarm</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Energy"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments.controllability">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.increments"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Increments"/>
-    <rdfs:label xml:lang="en">controllability</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_RedispatchEquipmentProfile"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerSystemResource"/>
-    <rdfs:label xml:lang="en">ControllableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Equipment">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core"/>
-    <rdfs:comment rdf:parseType="Literal">The parts of a power system that are physical devices, electronic or mechanical.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerSystemResource"/>
-    <rdfs:label xml:lang="en">Equipment</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower.multiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:label xml:lang="en">multiplier</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed>M</cims:isFixed>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:isFixed>W</cims:isFixed>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.T">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Tera 10**12.</rdfs:comment>
-    <rdfs:label xml:lang="en">T</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#enumeration"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdfs:comment rdf:parseType="Literal">The unit multipliers defined for the CIM.</rdfs:comment>
-    <rdfs:label xml:lang="en">UnitMultiplier</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minDownTime">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">minDownTime</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label xml:lang="en">PerCent</rdfs:label>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-    <rdfs:comment rdf:parseType="Literal">Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m2">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Area in square meters.</rdfs:comment>
-    <rdfs:label xml:lang="en">m2</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Step">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Controllability"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">Step</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#WindGeneratingUnit.hubHeight">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Length"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#WindGeneratingUnit"/>
-    <rdfs:label xml:lang="en">hubHeight</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.d">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Deci 10**-1.</rdfs:comment>
-    <rdfs:label xml:lang="en">d</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Length.value">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Length"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Float"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:label xml:lang="en">value</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.m">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Length in meter.</rdfs:comment>
-    <rdfs:label xml:lang="en">m</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Length">
-    <cims:stereotype>CIMDatatype</cims:stereotype>
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <rdfs:label xml:lang="en">Length</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Unit of length. Never negative.</rdfs:comment>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_DomainProfile"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.controllability">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.controllableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">controllability</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControlArea">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerSystemResource"/>
-    <rdfs:label xml:lang="en">ControlArea</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient.denominatorMultiplier">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <cims:isFixed>none</cims:isFixed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:label xml:lang="en">denominatorMultiplier</rdfs:label>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#GeneratingUnit">
-    <rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
-    <cims:belongsToCategory rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Package_Core"/>
-    <rdfs:subClassOf rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Equipment"/>
-    <rdfs:label xml:lang="en">GeneratingUnit</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.maxGradientMinus">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">maxGradientMinus</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.modelDescriptionURI">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <cims:isFixed>http://iec.ch/TC57/61970-552/ModelDescription/1#</cims:isFixed>
-    <rdfs:label xml:lang="en">modelDescriptionURI</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">Model Description URI defined by IEC 61970-552. </rdfs:comment>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.A">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Current in ampere.</rdfs:comment>
-    <rdfs:label xml:lang="en">A</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Length.unit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Length"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdfs:label xml:lang="en">unit</rdfs:label>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <cims:isFixed>m</cims:isFixed>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.VAr">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Reactive power in volt ampere reactive.</rdfs:comment>
-    <rdfs:label xml:lang="en">VAr</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.name">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment rdf:parseType="Literal">The name is any free human readable and possibly non unique text naming the object.</rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">name</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.p">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Pico 10**-12.</rdfs:comment>
-    <rdfs:label xml:lang="en">p</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.rampUpTimeWarm">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">rampUpTimeWarm</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.efficiency">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PerCent"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">efficiency</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#SolarGeneratingUnit.inverterP">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#SolarGeneratingUnit"/>
-    <rdfs:label xml:lang="en">inverterP</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient.denominatorUnit">
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <rdfs:label xml:lang="en">denominatorUnit</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:isFixed>h</cims:isFixed>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability.stepsList">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList.controllability"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#StepsList"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Controllability"/>
-    <rdfs:label xml:lang="en">stepsList</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.controllableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.redispatchableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">controllableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.shutdownTime">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">shutdownTime</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.entsoeUML">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:comment rdf:parseType="Literal">UML provided by ENTSO-E.</rdfs:comment>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:label xml:lang="en">entsoeUML</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:isFixed>entsoe_v2.4.15</cims:isFixed>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion.namespaceRDF">
-    <rdfs:domain rdf:resource="http://entsoe.eu/CIM/SchemaExtension/3/1#RedispatchEquipmentProfileVersion"/>
-    <cims:isFixed>http://www.w3.org/1999/02/22-rdf-syntax-ns#</cims:isFixed>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:comment rdf:parseType="Literal">RDF namespace.  </rdfs:comment>
-    <rdfs:label xml:lang="en">namespaceRDF</rdfs:label>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource.storage">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>Yes</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.redispatchableResource"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RedispatchableResource"/>
-    <rdfs:label xml:lang="en">storage</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject.mRID">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:comment rdf:parseType="Literal">Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#IdentifiedObject.mRID">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">mRID</rdfs:label>
+	<rdfs:domain rdf:resource="#IdentifiedObject"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdfs:comment  rdf:parseType="Literal">Master resource identifier issued by a model authority. The mRID is globally unique within an exchange context. Global uniqueness is easily achieved by using a UUID,  as specified in RFC 4122, for the mRID.  The use of UUID is strongly recommended.
 For CIMXML data files in RDF syntax conforming to IEC 61970-552 Edition 1, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements.</rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-    <rdfs:label xml:lang="en">mRID</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.timeToRealisation">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">timeToRealisation</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.maxGradientPlus">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#PowerGradient"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">maxGradientPlus</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName">
-    <cims:stereotype>Entsoe</cims:stereotype>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-    <rdfs:label xml:lang="en">shortName</rdfs:label>
-    <rdfs:comment rdf:parseType="Literal">The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</rdfs:comment>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#String"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#IdentifiedObject"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Pa">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Pressure in pascal (n/m2).</rdfs:comment>
-    <rdfs:label xml:lang="en">Pa</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.n">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Nano 10**-9.</rdfs:comment>
-    <rdfs:label xml:lang="en">n</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.minTStartupCold">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Seconds"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:label xml:lang="en">minTStartupCold</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage.netNominalPConsumption">
-    <cims:dataType rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ActivePower"/>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1"/>
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#Storage"/>
-    <rdfs:label xml:lang="en">netNominalPConsumption</rdfs:label>
-    <cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier.M">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitMultiplier"/>
-    <rdfs:comment rdf:parseType="Literal">Mega 10**6.</rdfs:comment>
-    <rdfs:label xml:lang="en">M</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.s">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Time in seconds.</rdfs:comment>
-    <rdfs:label xml:lang="en">s</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#ControlArea.controllableResource">
-    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
-    <cims:AssociationUsed>No</cims:AssociationUsed>
-    <cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..n"/>
-    <cims:inverseRoleName rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource.controlArea"/>
-    <rdfs:range rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControllableResource"/>
-    <rdfs:domain rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#ControlArea"/>
-    <rdfs:label xml:lang="en">controllableResource</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.J">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Energy in joule.</rdfs:comment>
-    <rdfs:label xml:lang="en">J</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol.Hz">
-    <rdf:type rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#UnitSymbol"/>
-    <rdfs:comment rdf:parseType="Literal">Frequency in hertz.</rdfs:comment>
-    <rdfs:label xml:lang="en">Hz</rdfs:label>
-  </rdf:Description>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#IdentifiedObject.name">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">name</rdfs:label>
+	<rdfs:domain rdf:resource="#IdentifiedObject"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdfs:comment  rdf:parseType="Literal">The name is any free human readable and possibly non unique text naming the object.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="http://entsoe.eu/CIM/SchemaExtension/3/1#IdentifiedObject.shortName">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">shortName</rdfs:label>
+	<rdfs:domain rdf:resource="#IdentifiedObject"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:stereotype>Entsoe</cims:stereotype>
+	<rdfs:comment  rdf:parseType="Literal">The attribute is used for an exchange of a human readable short name with length of the string 12 characters maximum.</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PowerSystemResource">
+	<rdfs:label xml:lang="en">PowerSystemResource</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#IdentifiedObject"/>
+	<cims:belongsToCategory rdf:resource="#Package_Core"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Package_Production">
+	<rdfs:label xml:lang="en">Production</rdfs:label>
+	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#SolarGeneratingUnit">
+	<rdfs:label xml:lang="en">SolarGeneratingUnit</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
+	<cims:belongsToCategory rdf:resource="#Package_Production"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#SolarGeneratingUnit.inverterP">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">inverterP</rdfs:label>
+	<rdfs:domain rdf:resource="#SolarGeneratingUnit"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#WindGeneratingUnit">
+	<rdfs:label xml:lang="en">WindGeneratingUnit</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#GeneratingUnit"/>
+	<cims:belongsToCategory rdf:resource="#Package_Production"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#WindGeneratingUnit.hubHeight">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">hubHeight</rdfs:label>
+	<rdfs:domain rdf:resource="#WindGeneratingUnit"/>
+	<cims:dataType rdf:resource="#Length"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Length">
+	<rdfs:label xml:lang="en">Length</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Unit of length. Never negative.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Length.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#Length"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Length.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#Length"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">m</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Length.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#Length"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">k</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#WindGeneratingUnit.windGenUnitModel">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">windGenUnitModel</rdfs:label>
+	<rdfs:domain rdf:resource="#WindGeneratingUnit"/>
+	<cims:dataType rdf:resource="#String"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Package_Storage">
+	<rdfs:label xml:lang="en">Storage</rdfs:label>
+	<rdf:type rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#ClassCategory"/>
+</rdf:Description>
+	 <rdf:Description rdf:about="#Storage">
+	<rdfs:label xml:lang="en">Storage</rdfs:label>
+	<rdfs:subClassOf rdf:resource="#Equipment"/>
+	<cims:belongsToCategory rdf:resource="#Package_Storage"/>
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#concrete"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.usableEnergyContent">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">usableEnergyContent</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#Energy"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Energy">
+	<rdfs:label xml:lang="en">Energy</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Product of the active power and time said power can be/is provided.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Energy.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#Energy"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Energy.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#Energy"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Wh</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Energy.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#Energy"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">M</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.efficiency">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">efficiency</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#PerCent"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PerCent">
+	<rdfs:label xml:lang="en">PerCent</rdfs:label>
+	<rdfs:comment  rdf:parseType="Literal">Percentage on a defined base.   For example, specify as 100 to indicate at the defined base.</rdfs:comment>
+<cims:stereotype>CIMDatatype</cims:stereotype>
+	<cims:belongsToCategory rdf:resource="#Package_DomainProfile"/>
+	<rdf:type rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PerCent.value">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">value</rdfs:label>
+	<rdfs:domain rdf:resource="#PerCent"/>
+	<cims:dataType rdf:resource="#Float"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<rdfs:comment  rdf:parseType="Literal">Normally 0 - 100 on a defined base</rdfs:comment>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PerCent.unit">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">unit</rdfs:label>
+	<rdfs:domain rdf:resource="#PerCent"/>
+	<rdfs:range rdf:resource="#UnitSymbol"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">none</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#PerCent.multiplier">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">multiplier</rdfs:label>
+	<rdfs:domain rdf:resource="#PerCent"/>
+	<rdfs:range rdf:resource="#UnitMultiplier"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:0..1" />
+	<cims:isFixed rdf:datatype="http://www.w3.org/2001/XMLSchema#string">none</cims:isFixed>
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.maxPStore">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">maxPStore</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.maxPDischarge">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">maxPDischarge</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.netNominalPConsumption">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">netNominalPConsumption</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
+	 <rdf:Description rdf:about="#Storage.netBottleneckPConsumption">
+	<cims:stereotype rdf:resource="http://iec.ch/TC57/NonStandard/UML#attribute"/>
+	<rdfs:label xml:lang="en">netBottleneckPConsumption</rdfs:label>
+	<rdfs:domain rdf:resource="#Storage"/>
+	<cims:dataType rdf:resource="#ActivePower"/>
+	<cims:multiplicity rdf:resource="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#M:1..1" />
+	<rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"/>
+	 </rdf:Description>
 </rdf:RDF>

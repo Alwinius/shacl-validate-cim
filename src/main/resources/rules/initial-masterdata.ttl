@@ -1,0 +1,67 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xs:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+
+cim:ToleranceModeControllableResource_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                   SELECT ?this WHERE {
+                        ?this   cim:ControllableResource.toleranceMode  "false"^^xsd:boolean .
+                   }
+            """ ] ;
+    sh:property [ sh:path     cim:ControllableResource.controllability ;
+                  sh:message  "controllability needs to be set if toleranceMode is false" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.requestKind ;
+                  sh:message  "requestKind needs to be set if toleranceMode is false" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.timeToRealisation ;
+                  sh:message  "timeToRealisation needs to be set if toleranceMode is false" ;
+                  sh:minCount 1 ] .
+
+cim:ControlZoneName_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:ControllableResource ;
+    sh:property    [ sh:path    ( cim:ControllableResource.controlArea
+                                  cim:IdentifiedObject.name ) ;
+                     sh:message "The name of the controlArea of a German ControllableResource can only be 10YDE-ENBW-----N, 10YDE-EON------1, 10YDE-RWENET---I or 10YFLENSBURG---3" ;
+                     sh:in      ( "10YDE-ENBW-----N" "10YDE-EON------1" "10YDE-RWENET---I" "10YDE-VE-------2" "10YFLENSBURG---3" ) ] .
+
+cim:FossilFuelControllableResource_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                   SELECT ?this WHERE {
+                        ?this   cim:ControllableResource.energySource  ?source .
+                        FILTER(str(?source) IN ("biogas", "lignite", "coal", "oil", "gas", "nuclear", "waste", "solarthermal"))
+                   }
+            """ ] ;
+    sh:property [ sh:path     cim:ControllableResource.minUpTime ;
+                  sh:message  "minUpTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minDownTime ;
+                  sh:message  "minDownTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minTStartupCold ;
+                  sh:message  "minTStartupCold needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minTStartupWarm ;
+                  sh:message  "minTStartupWarm needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.rampUpTimeCold ;
+                  sh:message  "rampUpTimeCold needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.rampUpTimeWarm ;
+                  sh:message  "rampUpTimeWarm needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.shutdownTime ;
+                  sh:message  "shutdownTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] .

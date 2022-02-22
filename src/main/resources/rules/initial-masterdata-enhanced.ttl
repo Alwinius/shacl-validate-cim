@@ -1,0 +1,151 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xs:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix cim:    <http://iec.ch/TC57/2013/CIM-schema-cim16#> .
+
+cim:ControlZoneName_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:ControllableResource ;
+    sh:property    [ sh:path    ( cim:ControllableResource.controlArea
+                                  cim:IdentifiedObject.name ) ;
+                     sh:message "The name of the controlArea of a German ControllableResource can only be 10YDE-ENBW-----N, 10YDE-EON------1, 10YDE-RWENET---I or 10YFLENSBURG---3" ;
+                     sh:in      ( "10YDE-ENBW-----N" "10YDE-EON------1" "10YDE-RWENET---I" "10YDE-VE-------2" "10YFLENSBURG---3" ) ] .
+
+cim:FossilFuelControllableResource_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                   SELECT ?this WHERE {
+                        ?this   cim:ControllableResource.energySource  ?source .
+                        FILTER(str(?source) IN ("biogas", "lignite", "coal", "oil", "gas", "nuclear", "waste", "solarthermal"))
+                   }
+            """ ] ;
+    sh:property [ sh:path     cim:ControllableResource.minUpTime ;
+                  sh:message  "minUpTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minDownTime ;
+                  sh:message  "minDownTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minTStartupCold ;
+                  sh:message  "minTStartupCold needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.minTStartupWarm ;
+                  sh:message  "minTStartupWarm needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.rampUpTimeCold ;
+                  sh:message  "rampUpTimeCold needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.rampUpTimeWarm ;
+                  sh:message  "rampUpTimeWarm needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.shutdownTime ;
+                  sh:message  "shutdownTime needs to be set for ControllableResources running on thermal processes" ;
+                  sh:minCount 1 ] .
+
+cim:ControllableResource_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:ControllableResource ;
+    sh:property    [ sh:class    cim:OrderingGridOperator ;
+                     sh:minCount 1 ;
+                     sh:path     cim:ControllableResource.orderingGridOperator ] ;
+    sh:property    [ sh:path     cim:ControllableResource.energySource ;
+                     sh:minCount 1 ] ;
+    sh:property    [ sh:path     cim:ControllableResource.compensationKind ;
+                     sh:minCount 1 ] .
+
+cim:ConnectingGridOperatorPartOfAffectedGridOperators_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:ConnectingGridOperator ;
+    sh:sparql      [ sh:message "The connecting grid operator needs to be part of the affected grid operators" ;
+                     sh:select  """
+                     PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                    SELECT ?value (MAX(?same) AS ?containedInAffected) # true if the connecting grid operator is part of affected grid operators
+                    WHERE {
+                        $this  ^cim:ControllableResource.connectingGridOperator ?value .
+                        ?value cim:ControllableResource.affectedGridOperatorsList/
+                            ^cim:GridOperatorsListEntry.affectedGridOperatorsList ?affectedGridOperator .
+                            ?affectedGridOperator cim:GridOperator.id ?affectedID .
+                        $this cim:GridOperator.id ?connectingID .
+                        BIND (?affectedID = ?connectingID AS ?same) # the connecting grid operator is the selected affected grid operator
+                    }
+                    GROUP BY ?value # this is the ControllableResource
+                    HAVING(! ?containedInAffected)
+              """ ] .
+
+cim:ToleranceModeNOControllableResource_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                   SELECT ?this WHERE {
+                        ?this   cim:ControllableResource.toleranceMode  "false"^^xsd:boolean .
+                   }
+            """ ] ;
+    sh:property [ sh:path     cim:ControllableResource.requestKind ;
+                  sh:message  "requestKind needs to be set if toleranceMode is false" ;
+                  sh:minCount 1 ] ;
+    sh:property [ sh:path     cim:ControllableResource.timeToRealisation ;
+                  sh:message  "timeToRealisation needs to be set if toleranceMode is false" ;
+                  sh:minCount 1 ; ] .
+
+cim:ToleranceModeYESControllableResource_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                   SELECT ?this WHERE {
+                        ?this   cim:ControllableResource.toleranceMode  "true"^^xsd:boolean .
+                   }
+            """ ] ;
+    sh:property [ sh:path     cim:ControllableResource.controllability ;
+                  sh:message  "controllability needs to be set if toleranceMode is true" ;
+                  sh:minCount 1 ; ] .
+
+cim:RedispatchableResource_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:RedispatchableResource ;
+    sh:property    [ sh:path     cim:RedispatchableResource.maStRNo ;
+                     sh:minCount 1 ] ;
+    sh:property    [ sh:path     cim:RedispatchableResource.marketLocationProduction ;
+                     sh:minCount 1 ] ;
+    sh:property    [ sh:path     cim:RedispatchableResource.grossNominalP ;
+                     sh:minCount 1 ] .
+
+cim:MarketLocation_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:MarketLocation ;
+    sh:or          ( [ sh:property [ sh:path     cim:MarketLocation.Tranche ;
+                                     sh:minCount 1 ] ; ]
+                     [ sh:and ( [ sh:property [ sh:path     cim:MarketLocation.balancingGroupEic ;
+                                                sh:message  "balancingGroupEic needs to be set if there is no Tranche" ;
+                                                sh:minCount 1 ; ] ]
+                                [ sh:property [ sh:path     cim:MarketLocation.supplier ;
+                                                sh:message  "supplier needs to be set of there is no Tranche" ;
+                                                sh:minCount 1 ] ] ) ] ) .
+
+cim:RedispatchableResource_EEG_manual_Shape
+    a           sh:NodeShape ;
+    sh:target   [ a         sh:SPARQLTarget ;
+                  sh:select """
+                   PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                   SELECT ?this WHERE {
+                        ?this   cim:RedispatchableResource.compensationKind  cim:CompensationKind.EEG .
+                   }
+            """ ] ;
+    sh:property [ sh:path     [ sh:inversePath cim:EEGUnitIdentifier.redispatchableResource ] ;
+                  sh:message  "There needs to be at least one EEGUnitIdentifier if CompensationKind is EEG" ;
+                  sh:minCount 1 ] .
+
+cim:SolarGeneratingUnit_manual_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:SolarGeneratingUnit ;
+    sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.generatingUnit ]
+                                   cim:RedispatchableResource.reduction70 ) ;
+                     sh:message  "RedispatchableResources referencing a SolarGeneratingUnit need to have the property reduction70 set." ;
+                     sh:minCount 1 ] .
