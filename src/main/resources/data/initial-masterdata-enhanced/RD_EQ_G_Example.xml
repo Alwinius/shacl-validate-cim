@@ -59,6 +59,14 @@
         <cim:ControllableResource.requestKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RequestKind.SOLLWERT"/>
         <cim:ControllableResource.orderingGridOperator rdf:resource="#_orderingGridOperator1"/>
     </cim:ControllableResource>
+    <cim:RedispatchableResource rdf:ID="_solarTR">
+        <cim:RedispatchableResource.maStRNo>234324</cim:RedispatchableResource.maStRNo>
+        <cim:RedispatchableResource.operator>operator</cim:RedispatchableResource.operator>
+        <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.SPITZ"/>
+        <cim:IdentifiedObject.name>Solar TR</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.marketLocationProduction rdf:resource="#_MarketLocationProduction1"/>
+        <cim:RedispatchableResource.reduction70>true</cim:RedispatchableResource.reduction70>
+    </cim:RedispatchableResource>
     <cim:AffectedGridOperatorsList rdf:ID="_affOperators1">
         <cim:IdentifiedObject.name>AffectedGridOperatorsList 1</cim:IdentifiedObject.name>
     </cim:AffectedGridOperatorsList>
@@ -122,6 +130,8 @@
     <cim:MarketLocationProduction rdf:ID="_MarketLocationProduction1">
         <cim:IdentifiedObject.name>MarketLocationProduction 1</cim:IdentifiedObject.name>
         <cim:MarketLocation.meterLocation rdf:resource="#_MeterLocation1"/>
+        <cim:MarketLocation.supplier rdf:resource="#_Supp1"/>
+        <cim:MarketLocation.balancingGroupEic>WKDJJF99---</cim:MarketLocation.balancingGroupEic>
     </cim:MarketLocationProduction>
     <cim:MeterLocation rdf:ID="_MeterLocation1">
         <cim:IdentifiedObject.name>Location 1</cim:IdentifiedObject.name>
@@ -131,4 +141,14 @@
         <cim:Supplier.id>0325230325233</cim:Supplier.id>
         <cim:IdentifiedObject.name>abc</cim:IdentifiedObject.name>
     </cim:Supplier>
+    <cim:EEGUnitIdentifier rdf:ID="_eegId">
+        <cim:IdentifiedObject.name>EEG1</cim:IdentifiedObject.name>
+        <cim:EEGUnitIdentifier.id>234729487294</cim:EEGUnitIdentifier.id>
+        <cim:EEGUnitIdentifier.redispatchableResource rdf:resource="#_otherTR"/>
+    </cim:EEGUnitIdentifier>
+    <cim:EEGUnitIdentifier rdf:ID="_eegId2">
+        <cim:IdentifiedObject.name>EEG2</cim:IdentifiedObject.name>
+        <cim:EEGUnitIdentifier.id>23472948294</cim:EEGUnitIdentifier.id>
+        <cim:EEGUnitIdentifier.redispatchableResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+    </cim:EEGUnitIdentifier>
 </rdf:RDF>

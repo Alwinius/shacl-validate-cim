@@ -119,7 +119,8 @@ cim:RedispatchableResource_manual_Shape
 
 cim:MarketLocation_manual_Shape
     a              sh:NodeShape ;
-    sh:targetClass cim:MarketLocation ;
+    sh:targetClass cim:MarketLocationProduction ;
+    sh:targetClass cim:MarketLocationConsumption ;
     sh:or          ( [ sh:property [ sh:path     cim:MarketLocation.Tranche ;
                                      sh:minCount 1 ] ; ]
                      [ sh:and ( [ sh:property [ sh:path     cim:MarketLocation.balancingGroupEic ;
@@ -135,11 +136,12 @@ cim:RedispatchableResource_EEG_manual_Shape
                   sh:select """
                    PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                    SELECT ?this WHERE {
-                        ?this   cim:RedispatchableResource.compensationKind  cim:CompensationKind.EEG .
+                        ?cr   cim:ControllableResource.compensationKind  cim:CompensationKind.EEG ;
+                              ^cim:RedispatchableResource.controllableResource ?this .
                    }
             """ ] ;
     sh:property [ sh:path     [ sh:inversePath cim:EEGUnitIdentifier.redispatchableResource ] ;
-                  sh:message  "There needs to be at least one EEGUnitIdentifier if CompensationKind is EEG" ;
+                  sh:message  "There needs to be at least one EEGUnitIdentifier if CompensationKind of the ControllableResource is EEG" ;
                   sh:minCount 1 ] .
 
 cim:SolarGeneratingUnit_manual_Shape

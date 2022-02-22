@@ -17,20 +17,28 @@
     </md:FullModel>
     <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
         <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
-<!--        <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>345</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>Complicated TR</cim:IdentifiedObject.name>
-        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller2"/>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
                 <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>
-<!--        <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
+    <cim:RedispatchableResource rdf:ID="_solarTR">
+        <cim:IdentifiedObject.name>Solar TR</cim:IdentifiedObject.name>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller2"/>
+        <cim:RedispatchableResource.generatingUnit rdf:resource="#_solarGenUnit"/>
+        <cim:RedispatchableResource.grossNominalP>464324</cim:RedispatchableResource.grossNominalP>
+    </cim:RedispatchableResource>
+    <cim:SolarGeneratingUnit rdf:ID="_solarGenUnit">
+        <cim:IdentifiedObject.name>Solar</cim:IdentifiedObject.name>
+        <cim:SolarGeneratingUnit.inverterP>5353</cim:SolarGeneratingUnit.inverterP>
+    </cim:SolarGeneratingUnit>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
         <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
         <cim:Storage.netNominalPConsumption>123.6</cim:Storage.netNominalPConsumption>

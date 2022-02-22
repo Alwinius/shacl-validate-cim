@@ -25,7 +25,7 @@
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 4 +RDV (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>+RDV</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv5">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 5 -RDV (for CR)</cim:IdentifiedObject.name>
@@ -85,43 +85,43 @@
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 5 -RDV (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>-RDV</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv26">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 6 +RDA (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>+RDA</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv27">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 7 -RDA (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>-RDA</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv28">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 8 Pmin (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>Pmin</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv29">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 9 Pmax (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>Pmax</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv210">
-        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 10 VERB (for TR)</cim:IdentifiedObject.name>
-        <cim:PlanningValue.kind>VERB</cim:PlanningValue.kind>
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 10 Pdar (for TR)</cim:IdentifiedObject.name>
+        <cim:PlanningValue.kind>Pdar (Solar)</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv211">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 11 PROD (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>PROD</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_solarTR"/>
     </cim:ActivePowerPlanningValue>
 <!--    <cim:ActivePowerPlanningValue rdf:ID="_pv2111">-->
 <!--        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 11 PROD (for TR)</cim:IdentifiedObject.name>-->
@@ -129,18 +129,6 @@
 <!--        <cim:ActivePowerPlanningValue.value>17</cim:ActivePowerPlanningValue.value>-->
 <!--        <cim:PlanningValue.powerSystemResource rdf:resource="#_otherTR2"/>-->
 <!--    </cim:ActivePowerPlanningValue>-->
-    <cim:ActivePowerPlanningValue rdf:ID="_pv212">
-        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 12 Vmax (for TR)</cim:IdentifiedObject.name>
-        <cim:PlanningValue.kind>Vmax</cim:PlanningValue.kind>
-        <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
-    </cim:ActivePowerPlanningValue>
-    <cim:ActivePowerPlanningValue rdf:ID="_pv213">
-        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 13 Vmin (for TR)</cim:IdentifiedObject.name>
-        <cim:PlanningValue.kind>Vmin</cim:PlanningValue.kind>
-        <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
-        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
-    </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv214">
         <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 14 Pdar (Wind) (for TR)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>Pdar (Wind)</cim:PlanningValue.kind>
