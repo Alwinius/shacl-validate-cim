@@ -22,6 +22,7 @@ import org.apache.jena.sparql.graph.GraphFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -101,7 +102,9 @@ public class ShaclValidationExample {
             }
 
             if (current.SHOW_SUMMARY) {
-                RDFDataMgr.write(System.out, report.getModel(), Lang.TTL);
+                var writer = new StringWriter();
+                RDFDataMgr.write(writer, report.getModel(), Lang.TTL);
+                log.info(writer.toString());
             }
         }
     }

@@ -23,4 +23,8 @@ public enum ExampleDataRegister {
         }
         return "data/" + useCase + "/" + path;
     }
+
+    public String getPath() {
+        return getPath(null);
+    }
 }
