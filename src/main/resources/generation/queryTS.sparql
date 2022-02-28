@@ -7,7 +7,6 @@ PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
 
 SELECT ?cr ?g ?name (SUM(?value) as ?sum) ?gradientPlus ?gradientMinus
 FROM <https://example.com/#RD_EQ>
-FROM <https://example.com/#RD_EQ_G>
 <RD_PD>
  WHERE {
 

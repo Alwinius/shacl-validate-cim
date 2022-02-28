@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:cim="http://iec.ch/TC57/2013/CIM-schema-cim16#"
+        xmlns:md="http://iec.ch/TC57/61970-552/ModelDescription/1#"
+        xmlns:entsoe="http://entsoe.eu/CIM/SchemaExtension/3/1#">
+    <md:FullModel rdf:about="urn:uuid:2e99cbd2-9a39-11e0-aa80-0800200c9a66">
+        <md:Model.profile>http://entsoe.eu/CIM/EquipmentShortCircuit/3/1</md:Model.profile>
+        <md:Model.modelingAuthoritySet>http://tscnet.eu/EMF</md:Model.modelingAuthoritySet>
+        <md:Model.Supersedes rdf:resource="urn:uuid:2399cbd2-9a39-11e0-aa80-0800200c9a66_EU"/>
+        <md:Model.created>2015-02-05T12:20:50.830</md:Model.created>
+        <md:Model.DependentOn rdf:resource="urn:uuid:2399cbd0-9a39-11e0-aa80-0800200c9a66"/>
+        <md:Model.description>CGMES Conformity Assessment: Mini Grid Type 1 Test Configuration. The model is owned by ENTSO-E and is provided by ENTSO-E "as it is". To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.</md:Model.description>
+        <md:Model.version>0</md:Model.version>
+        <md:Model.scenarioTime>2030-01-02T09:00:00</md:Model.scenarioTime>
+        <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
+    </md:FullModel>
+    <cim:ActivePowerPlanningValue rdf:ID="_pv11">
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 11 PROD (for CR)</cim:IdentifiedObject.name>
+        <cim:PlanningValue.kind>PROD</cim:PlanningValue.kind>
+        <cim:ActivePowerPlanningValue.value>172</cim:ActivePowerPlanningValue.value>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_controller"/>
+    </cim:ActivePowerPlanningValue>
+    <cim:ActivePowerPlanningValue rdf:ID="_pv211">
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 11 PROD (for TR)</cim:IdentifiedObject.name>
+        <cim:PlanningValue.kind>PROD</cim:PlanningValue.kind>
+        <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_8372a156-7579-4ea5-8793-24caf0d24603"/>
+    </cim:ActivePowerPlanningValue>
+    <cim:ActivePowerPlanningValue rdf:ID="_pv2111">
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 11 PROD (for TR)</cim:IdentifiedObject.name>
+        <cim:PlanningValue.kind>PROD</cim:PlanningValue.kind>
+        <cim:ActivePowerPlanningValue.value>17</cim:ActivePowerPlanningValue.value>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_otherTR2"/>
+    </cim:ActivePowerPlanningValue>
+</rdf:RDF>

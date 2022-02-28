@@ -13,6 +13,7 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFFormat;
+import org.apache.jena.riot.RDFParser;
 import org.apache.jena.shacl.ShaclValidator;
 import org.apache.jena.shacl.Shapes;
 import org.apache.jena.shacl.ValidationReport;
@@ -21,7 +22,6 @@ import org.apache.jena.sparql.graph.GraphFactory;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -42,6 +42,7 @@ public class ShaclValidationExample {
                                                              + "\t#   violation count: %d\n"
                                                              + "\t#   took: %d ms\n"
                                                              + "\t##################################################\n";
+    public static final String USE_CASE = "initial-masterdata-enhanced";
 
     public static void main(String[] args) throws IOException {
         var rdEqG = ExampleDataRegister.MINIGRID_RD_EQ_G;
@@ -49,9 +50,7 @@ public class ShaclValidationExample {
         var rdPd = ExampleDataRegister.MINIGRID_RD_PD;
 
         // setup type mapping
-        var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(rdEqG.rdfs.path);
-        typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdEq.rdfs.path));
-        typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdPd.rdfs.path));
+        var typeMap = Util.generateTypeMap(rdEq.rdfs.path, rdEqG.rdfs.path, rdPd.rdfs.path);
 
         // setup shapes
         var shapesGeneratedRdEqG = CIMRDFS2SHACL.generate(rdEqG.rdfs.path, typeMap);
@@ -62,26 +61,17 @@ public class ShaclValidationExample {
         var shapesUC1Masterdata = ShaclReader.readFromFile("rules/initial-masterdata-enhanced.ttl");
 
         RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGeneratedRdEqG.getGraph()), RDFFormat.TURTLE_PRETTY);
-        doBenchmark(typeMap, shapesManualRdEqG, List.of(rdEqG.path));
-        doBenchmark(typeMap, shapesManualRdEq, List.of(rdEq.path));
-        doBenchmark(typeMap, shapesGeneratedRdEqG, List.of(rdEqG.path));
-        doBenchmark(typeMap, shapesGeneratedRdEq, List.of(rdEq.path));
-        doBenchmark(typeMap, shapesCombined, List.of(rdEqG.path, rdEq.path, rdPd.path));
-        doBenchmark(typeMap, shapesUC1Masterdata, List.of(rdEqG.path, rdEq.path, rdPd.path));
-    }
-
-    public static void importFile(String dataFile1, Graph dataGraph, Map<Node, XSDDatatype> typeMap) {
-        try (InputStream is = ClassLoader.getSystemResourceAsStream(dataFile1)) { // open input stream
-            var sink = new TypedStreamRDF(dataGraph, typeMap);
-            RDFDataMgr.parse(sink, is, "", Lang.RDFXML);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doBenchmark(typeMap, shapesManualRdEqG, List.of(rdEqG.getPath(USE_CASE)));
+        doBenchmark(typeMap, shapesManualRdEq, List.of(rdEq.getPath(USE_CASE)));
+        doBenchmark(typeMap, shapesGeneratedRdEqG, List.of(rdEqG.getPath(USE_CASE)));
+        doBenchmark(typeMap, shapesGeneratedRdEq, List.of(rdEq.getPath(USE_CASE)));
+        doBenchmark(typeMap, shapesCombined, List.of(rdEqG.getPath(USE_CASE), rdEq.getPath(USE_CASE), rdPd.getPath(USE_CASE)));
+        doBenchmark(typeMap, shapesUC1Masterdata, List.of(rdEqG.getPath(USE_CASE), rdEq.getPath(USE_CASE), rdPd.getPath(USE_CASE)));
     }
 
     private static void doBenchmark(Map<Node, XSDDatatype> typeMap, Shapes shapes, List<String> dataFiles) {
         var dataGraph = GraphFactory.createDefaultGraph();
-        dataFiles.forEach(dataFile -> importFile(dataFile, dataGraph, typeMap));
+        dataFiles.forEach(dataFile -> Util.importFile(dataFile, dataGraph, typeMap));
 
         // validate
         long tic = System.currentTimeMillis();

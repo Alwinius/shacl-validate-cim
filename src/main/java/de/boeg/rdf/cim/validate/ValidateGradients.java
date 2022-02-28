@@ -3,7 +3,6 @@ package de.boeg.rdf.cim.validate;
 import de.boeg.rdf.cim.ControllableResource;
 import de.boeg.rdf.cim.registers.ExampleDataRegister;
 import de.boeg.rdf.cim.registers.RDFSRegister;
-import de.boeg.rdf.cim.typed.RDFS2DatatypeMapGenerator;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.apache.jena.datatypes.xsd.XSDDatatype;
@@ -20,47 +19,43 @@ import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static de.boeg.rdf.cim.registers.ExampleDataRegister.*;
+
 @Log
 public class ValidateGradients {
 
     private static final String URI_BASE = "https://example.com/#";
+    public static final String USE_CASE = "gradients";
 
     public static void main(String[] args) throws IOException {
-        var rdEqG = ExampleDataRegister.MINIGRID_RD_EQ_G;
-        var rdEq = ExampleDataRegister.MINIGRID_RD_EQ;
-        var rdPd = ExampleDataRegister.MINIGRID_RD_PD;
-        Map<RDFSRegister, Set<String>> graphRegister = new EnumMap<>(RDFSRegister.class);
+        Map<RDFSRegister, Set<String>> graphNamesPerProfile = new EnumMap<>(RDFSRegister.class);
 
         // setup type mapping
-        var typeMap = RDFS2DatatypeMapGenerator.parseDatatypeMap(rdEqG.rdfs.path);
-        typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdEq.rdfs.path));
-        typeMap.putAll(RDFS2DatatypeMapGenerator.parseDatatypeMap(rdPd.rdfs.path));
+        var typeMap = Util.generateTypeMap(MINIGRID_RD_EQ.rdfs.path, MINIGRID_RD_PD.rdfs.path);
 
         var dataSet = DatasetFactory.create();
-        addData(dataSet, rdEq, typeMap, graphRegister);
-        addData(dataSet, rdEqG, typeMap, graphRegister);
-        addData(dataSet, rdPd, typeMap, graphRegister);
-        addData(dataSet, ExampleDataRegister.MINIGRID_RD_PD2, typeMap, graphRegister);
+        addData(dataSet, MINIGRID_RD_EQ, typeMap, graphNamesPerProfile);
+        addData(dataSet, MINIGRID_RD_PD, typeMap, graphNamesPerProfile);
+        addData(dataSet, MINIGRID_RD_PD2, typeMap, graphNamesPerProfile);
 
-        var controllableResources = queryTimeSeries(dataSet, graphRegister);
+        var controllableResources = queryTimeSeries(dataSet, graphNamesPerProfile);
 
         validateGradients(controllableResources);
     }
 
-    private static void addData(Dataset dataset, ExampleDataRegister register, Map<Node, XSDDatatype> typeMap, Map<RDFSRegister, Set<String>> graphRegister) {
+    private static void addData(Dataset dataset, ExampleDataRegister register, Map<Node, XSDDatatype> typeMap, Map<RDFSRegister, Set<String>> graphNamesPerProfile) {
         var dataGraph = GraphFactory.createDefaultGraph();
-        ShaclValidationExample.importFile(register.path, dataGraph, typeMap);
+        Util.importFile(register.getPath(USE_CASE), dataGraph, typeMap);
 
-        var graphsOfRdfs = graphRegister.computeIfAbsent(register.rdfs, t -> new HashSet<>());
-        var graphname = URI_BASE + register.rdfs.name();
-
+        var graphName = URI_BASE + register.rdfs.name();
         if (register.rdfs.equals(RDFSRegister.RD_PD)) {
             var scenarioTime = getScenarioTime(dataGraph);
-            graphname = graphname + "/" + scenarioTime;
+            graphName = graphName + "/" + scenarioTime;
         }
 
-        graphsOfRdfs.add(graphname);
-        dataset.addNamedModel(graphname, ModelFactory.createModelForGraph(dataGraph));
+        var graphNamesForProfile = graphNamesPerProfile.computeIfAbsent(register.rdfs, t -> new HashSet<>());
+        graphNamesForProfile.add(graphName);
+        dataset.addNamedModel(graphName, ModelFactory.createModelForGraph(dataGraph));
         dataset.commit();
     }
 
@@ -79,18 +74,18 @@ public class ValidateGradients {
 
     private static Collection<ControllableResource> queryTimeSeries(Dataset dataset, Map<RDFSRegister, Set<String>> graphRegister) throws IOException {
         var query = prepareQuery(graphRegister);
-        Map<String, ControllableResource> controllableResourceMap = new HashMap<>();
+        Map<String, ControllableResource> controllableResourceById = new HashMap<>();
         try (var execution = QueryExecutionFactory.create(query, dataset)) {
             var resultSet = execution.execSelect();
             while (resultSet != null && resultSet.hasNext()) {
                 var typePropertyRow = resultSet.next();
                 var id = typePropertyRow.get("cr").asResource().getURI();
-                var resource = controllableResourceMap.computeIfAbsent(id, x -> mapToNewCR(typePropertyRow));
+                var resource = controllableResourceById.computeIfAbsent(id, x -> mapToNewCR(typePropertyRow));
                 var profileTime = Instant.parse(typePropertyRow.getResource("g").getURI().substring(27));
                 resource.getProdTimeSeries().put(profileTime, typePropertyRow.getLiteral("sum").getDouble());
             }
         }
-        return controllableResourceMap.values();
+        return controllableResourceById.values();
     }
 
     private static Query prepareQuery(Map<RDFSRegister, Set<String>> graphRegister) throws IOException {
@@ -114,23 +109,26 @@ public class ValidateGradients {
     }
 
     private static void validateGradient(ControllableResource controllableResource) {
-        var timeseries = controllableResource.getProdTimeSeries();
-        var orderedInstants = timeseries.keySet().stream().sorted().collect(Collectors.toList());
-        for (int i = 1; i < timeseries.size(); i++) {
+        var timeSeries = controllableResource.getProdTimeSeries();
+        if (timeSeries.size() < 2) {
+            return;
+        }
+        var orderedInstants = timeSeries.keySet().stream().sorted().collect(Collectors.toList());
+        for (int i = 1; i < timeSeries.size(); i++) {
             var previous = orderedInstants.get(i - 1);
             var current = orderedInstants.get(i);
             var timeDifference = Duration.between(previous, current).getSeconds() / 60.0 / 60.0; // in hours
-            var previousValue = timeseries.get(previous); // in MW
-            var currentValue = timeseries.get(current); // in MW
+            var previousValue = timeSeries.get(previous); // in MW
+            var currentValue = timeSeries.get(current); // in MW
             var valueDifference = currentValue - previousValue;
             if (valueDifference > 0 && controllableResource.getMaxGradientPlus() != null &&
                           valueDifference / timeDifference > controllableResource.getMaxGradientPlus()) {
-                log.warning("Gradient from " + previous + " to " + current + " is larger than allowed for "+controllableResource.getName());
+                log.warning("Gradient from " + previous + " to " + current + " is larger than allowed for " + controllableResource.getName());
             }
 
             if (valueDifference < 0 && controllableResource.getMaxGradientMinus() != null &&
                           -valueDifference / timeDifference > controllableResource.getMaxGradientMinus()) {
-                log.warning("Gradient from " + previous + " to " + current + " is larger than allowed for "+controllableResource.getName());
+                log.warning("Gradient from " + previous + " to " + current + " is larger than allowed for " + controllableResource.getName());
             }
         }
     }

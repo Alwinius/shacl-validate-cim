@@ -33,7 +33,7 @@ cim:ID_Shape
 cim:GS1_ID_Shape
     a             sh:NodeShape ;
     sh:targetNode cim:CodingScheme.GS1 ;
-    sh:sparql     [ sh:message "Element $value uses GS1 coding scheme but ID does not contain 13 digits." ;
+    sh:sparql     [ sh:message "Element uses GS1 coding scheme but ID does not contain 13 digits." ;
                     sh:select  """
                         PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
                         SELECT ?id ?gridOperator ?value ?attributeName ?idAttribute
