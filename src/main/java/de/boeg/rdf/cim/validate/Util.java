@@ -16,9 +16,9 @@ import java.util.Map;
 @UtilityClass
 public class Util {
 
-    public static void importFile(String dataFile1, Graph dataGraph, Map<Node, XSDDatatype> typeMap) {
+    public static void importFile(String dataFile, Graph dataGraph, Map<Node, XSDDatatype> typeMap) {
         var sink = new TypedStreamRDF(dataGraph, typeMap);
-        RDFParser.source(dataFile1).base("").lang(Lang.RDFXML).parse(sink);
+        RDFParser.source(dataFile).base("").lang(Lang.RDFXML).parse(sink);
     }
 
     public static Map<Node, XSDDatatype> generateTypeMap(String... rdfsPaths) {

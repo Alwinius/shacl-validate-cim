@@ -15,7 +15,7 @@
         <md:Model.scenarioTime>2030-01-02T09:00:00</md:Model.scenarioTime>
         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
     </md:FullModel>
-    <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
+    <cim:RedispatchableResource rdf:ID="_WindTR">
         <cim:IdentifiedObject.name>Complicated TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.operator>Ms. Op</cim:RedispatchableResource.operator>
         <cim:RedispatchableResource.accountingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#AccountingModel.SPITZ"/>
@@ -40,8 +40,14 @@
         <cim:ControllableResource.affectedGridOperatorsList rdf:resource="#_affOperators1"/>
         <cim:ControllableResource.connectingGridOperator rdf:resource="#_connOperator1"/>
         <cim:ControllableResource.addtlAffectedGridOperatorsList rdf:resource="#_addtlOperators1"/>
-        <cim:ControllableResource.controlGroup rdf:resource="#_CG1"/>
         <cim:ControllableResource.toleranceMode>true</cim:ControllableResource.toleranceMode>
+        <cim:ControllableResource.requestKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RequestKind.DELTA"/>
+    </cim:ControllableResource>
+    <cim:ControllableResource rdf:ID="_WindController">
+        <cim:IdentifiedObject.name>Controller2</cim:IdentifiedObject.name>
+        <cim:ControllableResource.manager>Man Ager</cim:ControllableResource.manager>
+        <cim:ControllableResource.toleranceMode>true</cim:ControllableResource.toleranceMode>
+        <cim:ControllableResource.balancingModel rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#BalancingModel.PLANWERT"/>
         <cim:ControllableResource.requestKind rdf:resource="http://iec.ch/TC57/2013/CIM-schema-cim16#RequestKind.DELTA"/>
     </cim:ControllableResource>
     <cim:AffectedGridOperatorsList rdf:ID="_affOperators1">
@@ -81,16 +87,12 @@
         <cim:Supplier.id>0325230325233</cim:Supplier.id>
         <cim:IdentifiedObject.name>abc</cim:IdentifiedObject.name>
     </cim:Supplier>
-    <cim:ControlGroup rdf:ID="_CG1">
-        <cim:IdentifiedObject.name>Controlgroup 1</cim:IdentifiedObject.name>
-        <cim:ControlGroup.requestTime>23</cim:ControlGroup.requestTime>
-    </cim:ControlGroup>
     <cim:Cluster rdf:ID="_Cluster1">
         <cim:IdentifiedObject.name>Cluster 1</cim:IdentifiedObject.name>
-        <cim:Cluster.controlGroup rdf:resource="#_CG1"/>
         <cim:Cluster.globalCluster rdf:resource="#_Cluster2"/>
     </cim:Cluster>
     <cim:Cluster rdf:ID="_Cluster2">
         <cim:IdentifiedObject.name>Cluster 2</cim:IdentifiedObject.name>
+        <cim:Cluster.controllableResource rdf:resource="#_controller"/>
     </cim:Cluster>
 </rdf:RDF>

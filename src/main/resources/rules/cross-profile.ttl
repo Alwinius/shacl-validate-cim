@@ -11,7 +11,7 @@ cim:ActivePowerPlanningValue_manual_Shape
     sh:targetClass cim:ActivePowerPlanningValue ;
     sh:property    [ sh:path     cim:PlanningValue.powerSystemResource ;
                      sh:nodeKind sh:IRI ;
-                     sh:message  "Planning values can only be connected to RedispatchableResources or ControllableResources" ;
+                     sh:message  "Planning values can only be connected to RedispatchableResources, ControllableResources, ControlGroups or Clusters" ;
                      sh:or       ( [ sh:class cim:RedispatchableResource ]
                                    [ sh:class cim:ControllableResource ]
                                    [ sh:class cim:Cluster ]
@@ -29,6 +29,7 @@ cim:ActivePowerPlanningValue_manual_Shape
                                    cim:PlanningValue.powerSystemResource/
                                    ^cim:Cluster.globalCluster*/
                                    cim:Cluster.controlGroup?/
+                                   cim:Cluster.controllableResource?/
                                    ^cim:ControllableResource.controlGroup?/
                                    ^cim:RedispatchableResource.controllableResource?/
                                    cim:RedispatchableResource.storage ?storage .
@@ -48,6 +49,7 @@ cim:ActivePowerPlanningValue_manual_Shape
                                    cim:PlanningValue.powerSystemResource/
                                    ^cim:Cluster.globalCluster*/
                                    cim:Cluster.controlGroup?/
+                                   cim:Cluster.controllableResource?/
                                    ^cim:ControllableResource.controlGroup?/
                                    ^cim:RedispatchableResource.controllableResource? ?tr .
                     ?tr       cim:RedispatchableResource.netBottleneckPProduction ?production .
@@ -65,6 +67,7 @@ cim:ActivePowerPlanningValue_manual_Shape
                                    cim:PlanningValue.powerSystemResource/
                                    ^cim:Cluster.globalCluster*/
                                    cim:Cluster.controlGroup?/
+                                   cim:Cluster.controllableResource?/
                                    ^cim:ControllableResource.controlGroup?/
                                    ^cim:RedispatchableResource.controllableResource?/
                                    cim:RedispatchableResource.generatingUnit ?genUnit .
@@ -77,8 +80,9 @@ cim:RedispatchableResourceContainsPlanningData_Shape
     sh:closed      false ;
     sh:targetClass cim:RedispatchableResource ;
     sh:property    [ sh:path     ( [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controllableResource ] ]
                                    [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
-                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controlGroup ] ]
                                    [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;
@@ -96,8 +100,9 @@ cim:StorageContainsPlanningData_Shape
     sh:targetClass cim:Storage ;
     sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.storage ]
                                    [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controllableResource ] ]
                                    [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
-                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controlGroup ] ]
                                    [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;
@@ -115,6 +120,7 @@ cim:RedispatchableResourceSinglePlanningData_Shape
                         SELECT $this ?kind (COUNT(?planningValue) as ?count) (GROUP_CONCAT(?planningValueName;SEPARATOR=", ") as ?value)
                         WHERE {
                             $this   cim:RedispatchableResource.controllableResource?/
+                                    ^cim:Cluster.controllableResource?/
                                     cim:ControllableResource.controlGroup?/
                                     ^cim:Cluster.controlGroup/
                                     cim:Cluster.globalCluster*/
@@ -138,6 +144,7 @@ cim:RedispatchableResourceExplicitOrImplicitPlanningData_Shape
                         WHERE {
                             $this   a cim:RedispatchableResource ;
                                     cim:RedispatchableResource.controllableResource?/
+                                    ^cim:Cluster.controllableResource?/
                                     cim:ControllableResource.controlGroup?/
                                     ^cim:Cluster.controlGroup?/
                                     cim:Cluster.globalCluster* ?base .
@@ -155,8 +162,9 @@ cim:WindGeneratingUnitContainsPlanningData_Shape
     sh:targetClass cim:WindGeneratingUnit ;
     sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.generatingUnit ]
                                    [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controllableResource ] ]
                                    [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
-                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controlGroup ] ]
                                    [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;
@@ -168,8 +176,9 @@ cim:SolarGeneratingUnitContainsPlanningData_Shape
     sh:targetClass cim:SolarGeneratingUnit ;
     sh:property    [ sh:path     ( [ sh:inversePath cim:RedispatchableResource.generatingUnit ]
                                    [ sh:zeroOrOnePath cim:RedispatchableResource.controllableResource ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controllableResource ] ]
                                    [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
-                                   [ sh:zeroOrOnePath [sh:inversePath cim:Cluster.controlGroup ] ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controlGroup ] ]
                                    [ sh:zeroOrMorePath cim:Cluster.globalCluster ]
                                    [ sh:inversePath cim:PlanningValue.powerSystemResource ]
                                    cim:PlanningValue.kind ) ;

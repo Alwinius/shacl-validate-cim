@@ -43,7 +43,7 @@ public class ShaclValidationExample {
                                                              + "\t#   violation count: %d\n"
                                                              + "\t#   took: %d ms\n"
                                                              + "\t##################################################\n";
-    public static final String USE_CASE = "initial-masterdata-enhanced";
+    public static final String USE_CASE = "planning-data";
 
     public static void main(String[] args) throws IOException {
         var rdEqG = ExampleDataRegister.MINIGRID_RD_EQ_G;
@@ -59,7 +59,7 @@ public class ShaclValidationExample {
         var shapesManualRdEqG = ShaclReader.readFromFile(rdEqG.rdfs.rulesPath);
         var shapesManualRdEq = ShaclReader.readFromFile(rdEq.rdfs.rulesPath);
         var shapesCombined = ShaclReader.readFromFile("rules/cross-profile.ttl");
-        var shapesUC1Masterdata = ShaclReader.readFromFile("rules/initial-masterdata-enhanced.ttl");
+    //    var shapesUC1Masterdata = ShaclReader.readFromFile("rules/initial-masterdata-enhanced.ttl");
 
         RDFDataMgr.write(new FileOutputStream("withClass.ttl"), ModelFactory.createModelForGraph(shapesGeneratedRdEqG.getGraph()), RDFFormat.TURTLE_PRETTY);
         doBenchmark(typeMap, shapesManualRdEqG, List.of(rdEqG.getPath(USE_CASE)));
@@ -67,7 +67,7 @@ public class ShaclValidationExample {
         doBenchmark(typeMap, shapesGeneratedRdEqG, List.of(rdEqG.getPath(USE_CASE)));
         doBenchmark(typeMap, shapesGeneratedRdEq, List.of(rdEq.getPath(USE_CASE)));
         doBenchmark(typeMap, shapesCombined, List.of(rdEqG.getPath(USE_CASE), rdEq.getPath(USE_CASE), rdPd.getPath(USE_CASE)));
-        doBenchmark(typeMap, shapesUC1Masterdata, List.of(rdEqG.getPath(USE_CASE), rdEq.getPath(USE_CASE), rdPd.getPath(USE_CASE)));
+    //    doBenchmark(typeMap, shapesUC1Masterdata, List.of(rdEqG.getPath(USE_CASE), rdEq.getPath(USE_CASE), rdPd.getPath(USE_CASE)));
     }
 
     private static void doBenchmark(Map<Node, XSDDatatype> typeMap, Shapes shapes, List<String> dataFiles) {

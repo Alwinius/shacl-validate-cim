@@ -10,35 +10,40 @@
         <md:Model.Supersedes rdf:resource="urn:uuid:2399cbd2-9a39-11e0-aa80-0800200c9a66_EU"/>
         <md:Model.created>2015-02-05T12:20:50.830</md:Model.created>
         <md:Model.DependentOn rdf:resource="urn:uuid:2399cbd0-9a39-11e0-aa80-0800200c9a66"/>
-        <md:Model.description>CGMES Conformity Assessment: Mini Grid Type 1 Test Configuration. The model is owned by ENTSO-E and is provided by ENTSO-E "as it is". To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information related to the model.</md:Model.description>
+        <md:Model.description>CGMES Conformity Assessment: Mini Grid Type 1 Test Configuration. The model is owned by ENTSO-E and is provided by ENTSO-E "as it is". To the fullest extent permitted by law, ENTSO-E shall not be liable for any damages of any kind arising out of the use of the model
+            (including any of its subsequent modifications). ENTSO-E neither warrants, nor represents that the use of the model will not infringe the rights of third parties. Any use of the model shall include a reference to ENTSO-E. ENTSO-E web site is the only official source of information
+            related to the model.
+        </md:Model.description>
         <md:Model.version>0</md:Model.version>
         <md:Model.scenarioTime>2030-01-02T09:00:00</md:Model.scenarioTime>
         <md:Model.profile>http://entsoe.eu/CIM/EquipmentCore/3/1</md:Model.profile>
     </md:FullModel>
-    <cim:RedispatchableResource rdf:ID="_8372a156-7579-4ea5-8793-24caf0d24603">
-        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
-<!--        <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
+    <cim:RedispatchableResource rdf:ID="_WindTR">
+        <cim:RedispatchableResource.generatingUnit rdf:resource="#_windGenUnit"/>
         <cim:RedispatchableResource.grossNominalP>123.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>345</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>Complicated TR</cim:IdentifiedObject.name>
-        <cim:RedispatchableResource.controllableResource rdf:resource="#_controller2"/>
+        <cim:RedispatchableResource.controllableResource rdf:resource="#_WindController"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR">
-                <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>
-<!--        <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
+        <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
     <cim:RedispatchableResource rdf:ID="_otherTR2">
-<!--        <cim:RedispatchableResource.storage rdf:resource="#_Storage2"/>-->
-<!--                <cim:ControllableResource.generatingUnit rdf:resource="#_123abc"/>-->
+        <cim:RedispatchableResource.storage rdf:resource="#_B3F9CA3C5E6439BEE0536B4812AC824B"/>
         <cim:RedispatchableResource.grossNominalP>1232.6</cim:RedispatchableResource.grossNominalP>
         <cim:RedispatchableResource.netBottleneckPProduction>3445</cim:RedispatchableResource.netBottleneckPProduction>
         <cim:IdentifiedObject.name>Other TR</cim:IdentifiedObject.name>
         <cim:RedispatchableResource.controllableResource rdf:resource="#_controller"/>
     </cim:RedispatchableResource>
+    <cim:WindGeneratingUnit rdf:ID="_windGenUnit">
+        <cim:IdentifiedObject.name>Wind Generating Unit</cim:IdentifiedObject.name>
+        <cim:WindGeneratingUnit.hubHeight>100</cim:WindGeneratingUnit.hubHeight>
+        <cim:WindGeneratingUnit.windGenUnitModel>Enercom ABC</cim:WindGeneratingUnit.windGenUnitModel>
+    </cim:WindGeneratingUnit>
     <cim:Storage rdf:ID="_B3F9CA3C5E6439BEE0536B4812AC824B">
         <cim:IdentifiedObject.name>storage</cim:IdentifiedObject.name>
         <cim:Storage.netNominalPConsumption>123.6</cim:Storage.netNominalPConsumption>
@@ -73,7 +78,7 @@
         <cim:ControllableResource.rampUpTimeWarm>12</cim:ControllableResource.rampUpTimeWarm>
         <cim:ControllableResource.shutdownTime>12</cim:ControllableResource.shutdownTime>
     </cim:ControllableResource>
-    <cim:ControllableResource rdf:ID="_controller2">
+    <cim:ControllableResource rdf:ID="_WindController">
         <cim:IdentifiedObject.name>Controller2</cim:IdentifiedObject.name>
         <cim:ControllableResource.minOperatingP>50</cim:ControllableResource.minOperatingP>
         <cim:ControllableResource.controlArea rdf:resource="#_ControlArea"/>
@@ -87,7 +92,6 @@
     <cim:Controllability rdf:ID="_Controllability">
         <cim:IdentifiedObject.name>Controllability 1</cim:IdentifiedObject.name>
         <cim:Controllability.increments rdf:resource="#_Increments1"/>
-<!--        <cim:Controllability.stepsList rdf:resource="#_StepsList1"/>-->
     </cim:Controllability>
     <cim:Increments rdf:ID="_Increments1">
         <cim:IdentifiedObject.name>Increments 1</cim:IdentifiedObject.name>
@@ -97,8 +101,7 @@
     </cim:Increments>
     <cim:Controllability rdf:ID="_Controllability2">
         <cim:IdentifiedObject.name>Controllability 2</cim:IdentifiedObject.name>
-<!--        <cim:Controllability.increments rdf:resource="#_Increments1"/>-->
-                <cim:Controllability.stepsList rdf:resource="#_StepsList1"/>
+        <cim:Controllability.stepsList rdf:resource="#_StepsList1"/>
     </cim:Controllability>
     <cim:StepsList rdf:ID="_StepsList1">
         <cim:IdentifiedObject.name>Stepslist 1</cim:IdentifiedObject.name>
