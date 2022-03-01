@@ -124,8 +124,14 @@
         <cim:PlanningValue.powerSystemResource rdf:resource="#_WindTR"/>
     </cim:ActivePowerPlanningValue>
     <cim:ActivePowerPlanningValue rdf:ID="_pv214">
-        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 14 Pdar (Wind) (for TR)</cim:IdentifiedObject.name>
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 14 Pdar (Wind) (for Cluster)</cim:IdentifiedObject.name>
         <cim:PlanningValue.kind>Pdar (Wind)</cim:PlanningValue.kind>
+        <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
+        <cim:PlanningValue.powerSystemResource rdf:resource="#_Cluster2"/>
+    </cim:ActivePowerPlanningValue>
+    <cim:ActivePowerPlanningValue rdf:ID="_pv216">
+        <cim:IdentifiedObject.name>ActivePowerPlanningValue Number 15 +RREQ</cim:IdentifiedObject.name>
+        <cim:PlanningValue.kind>+RDREQ</cim:PlanningValue.kind>
         <cim:ActivePowerPlanningValue.value>72</cim:ActivePowerPlanningValue.value>
         <cim:PlanningValue.powerSystemResource rdf:resource="#_Cluster2"/>
     </cim:ActivePowerPlanningValue>

@@ -3,17 +3,13 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
 PREFIX uml: <http://iec.ch/TC57/NonStandard/UML#>
+PREFIX md: <http://iec.ch/TC57/61970-552/ModelDescription/1#>
 
-PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
-SELECT $this ?value
-WHERE {
-    VALUES ?kind { "VERB" "Vmax" "Vmin" }
-    $this  cim:PlanningValue.kind ?kind ;
-           cim:PlanningValue.powerSystemResource/
-           ^cim:Cluster.globalCluster*/
-           cim:Cluster.controlGroup?/
-           ^cim:ControllableResource.controlGroup?/
-           ^cim:RedispatchableResource.controllableResource?/
-           cim:RedispatchableResource.storage                ?genUnit .
-    ?genUnit cim:IdentifiedObject.name ?value
-}
+                    SELECT $this ?value WHERE {
+                        $this cim:PlanningValue.kind "+RDREQ" ;
+                            cim:ActivePowerPlanningValue.value ?toActivate ;
+                            cim:PlanningValue.powerSystemResource/^cim:PlanningValue.powerSystemResource ?constraint .
+                        ?constraint cim:PlanningValue.kind "+RDV" ;
+                                    cim:ActivePowerPlanningValue.value ?value .
+                        FILTER (?toActivate > ?value)
+                    }

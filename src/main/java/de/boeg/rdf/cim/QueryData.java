@@ -11,7 +11,7 @@ import org.apache.jena.sparql.graph.GraphFactory;
 import java.io.IOException;
 
 public class QueryData {
-    public static final String USE_CASE = "initial-masterdata-enhanced";
+    public static final String USE_CASE = "planning-data";
 
     public static void main(String[] args) throws IOException {
         var rdEqG = ExampleDataRegister.MINIGRID_RD_EQ_G;

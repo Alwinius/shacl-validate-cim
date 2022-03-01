@@ -90,9 +90,13 @@
     <cim:Cluster rdf:ID="_Cluster1">
         <cim:IdentifiedObject.name>Cluster 1</cim:IdentifiedObject.name>
         <cim:Cluster.globalCluster rdf:resource="#_Cluster2"/>
+        <cim:Cluster.requestTime>425</cim:Cluster.requestTime>
+        <cim:Cluster.executionTime>32</cim:Cluster.executionTime>
     </cim:Cluster>
     <cim:Cluster rdf:ID="_Cluster2">
         <cim:IdentifiedObject.name>Cluster 2</cim:IdentifiedObject.name>
         <cim:Cluster.controllableResource rdf:resource="#_controller"/>
+        <cim:Cluster.requestTime>342</cim:Cluster.requestTime>
+        <cim:Cluster.executionTime>23</cim:Cluster.executionTime>
     </cim:Cluster>
 </rdf:RDF>

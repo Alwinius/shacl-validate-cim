@@ -73,6 +73,18 @@ cim:ActivePowerPlanningValue_manual_Shape
                                    cim:RedispatchableResource.generatingUnit ?genUnit .
                     ?genUnit cim:IdentifiedObject.name ?value
                 }
+              """ ] ;
+    sh:sparql      [ sh:message "Redispatch requests need to be lower than +RDV" ;
+                     sh:select  """
+                        PREFIX cim: <http://iec.ch/TC57/2013/CIM-schema-cim16#>
+                        SELECT $this ?value WHERE {
+                            $this cim:PlanningValue.kind "+RDREQ" ;
+                                  cim:ActivePowerPlanningValue.value ?toActivate ;
+                                  cim:PlanningValue.powerSystemResource/^cim:PlanningValue.powerSystemResource ?constraint .
+                            ?constraint cim:PlanningValue.kind "+RDV" ;
+                                        cim:ActivePowerPlanningValue.value ?value .
+                            FILTER (?toActivate > ?value)
+                        }
               """ ] .
 
 cim:RedispatchableResourceContainsPlanningData_Shape
