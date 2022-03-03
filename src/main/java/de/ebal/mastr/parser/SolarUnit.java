@@ -4,11 +4,13 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import lombok.Getter;
+import lombok.ToString;
 
-// order of the fields in XML
-// @XmlType(propOrder = {"price", "name"})
+import java.util.Date;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
+@ToString
 public class SolarUnit {
 
     @XmlElement(name = "MaStRNummer")
@@ -31,4 +33,10 @@ public class SolarUnit {
 
     @XmlElement(name="FernsteuerbarkeitNb")
     Integer fernsteuerbarkeit;
+
+    @XmlElement(name="EinheitBetriebsstatus")
+    Integer status;
+
+    @XmlElement(name = "Inbetriebnahmedatum")
+    Date inbetriebnahmedatum;
 }
