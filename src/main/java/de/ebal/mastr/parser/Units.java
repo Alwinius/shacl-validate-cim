@@ -10,9 +10,9 @@ import java.util.List;
 
 @XmlRootElement(name = "EinheitenSolar")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SolarUnits {
+public class Units {
 
     @XmlElement(name = "EinheitSolar")
     @Getter
-    private List<SolarUnit> solarUnits;
+    private List<Unit> units;
 }

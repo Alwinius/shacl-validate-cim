@@ -8,10 +8,11 @@ import lombok.ToString;
 
 import java.util.Date;
 
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @Getter
 @ToString
-public class SolarUnit {
+public class Unit {
 
     @XmlElement(name = "MaStRNummer")
     String maStRNummer;
@@ -28,9 +29,6 @@ public class SolarUnit {
     @XmlElement(name="Nettonennleistung")
     Float nettonennleistung;
 
-    @XmlElement(name="Hauptausrichtung")
-    String hauptausrichtung;
-
     @XmlElement(name="FernsteuerbarkeitNb")
     Integer fernsteuerbarkeit;
 
@@ -39,4 +37,8 @@ public class SolarUnit {
 
     @XmlElement(name = "Inbetriebnahmedatum")
     Date inbetriebnahmedatum;
+
+    @XmlElement(name="Hauptausrichtung")
+    String hauptausrichtung;
+
 }

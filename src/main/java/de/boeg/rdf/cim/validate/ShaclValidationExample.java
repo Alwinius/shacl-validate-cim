@@ -43,7 +43,7 @@ public class ShaclValidationExample {
                                                              + "\t#   violation count: %d\n"
                                                              + "\t#   took: %d ms\n"
                                                              + "\t##################################################\n";
-    public static final String USE_CASE = "planning-data";
+    public static final String USE_CASE = "initial-masterdata";
 
     public static void main(String[] args) throws IOException {
         var rdEqG = ExampleDataRegister.MINIGRID_RD_EQ_G;

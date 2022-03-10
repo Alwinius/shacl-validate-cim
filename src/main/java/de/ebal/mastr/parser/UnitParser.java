@@ -4,15 +4,16 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
-import org.apache.commons.lang3.Validate;
-import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
@@ -23,8 +24,8 @@ public class UnitParser {
 
         try {
             // Normal JAXB RI
-            var jaxbContext = JAXBContext.newInstance(SolarUnits.class);
-            HashSet<SolarUnit> allUnits = new HashSet<>();
+            var jaxbContext = JAXBContext.newInstance(Units.class);
+            HashSet<Unit> allUnits = new HashSet<>();
 
             for (int i = 1; i < 24; i++) {
                 System.out.println("Reading file no. " + i);
@@ -32,9 +33,9 @@ public class UnitParser {
 
                 Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-                SolarUnits o = (SolarUnits) jaxbUnmarshaller.unmarshal(file);
+                Units o = (Units) jaxbUnmarshaller.unmarshal(file);
                 //  var filteredUnits = o.getSolarUnits().stream().filter(unit -> (unit.getFernsteuerbarkeit() != null && unit.getFernsteuerbarkeit() == 1) || unit.getNettonennleistung() >= 100.000).collect(toSet());
-                var filteredUnits = o.getSolarUnits().stream() //.filter(unit -> (unit.getFernsteuerbarkeit() != null && unit.getFernsteuerbarkeit() == 1) ||unit.getNettonennleistung() >= 100)
+                var filteredUnits = o.getUnits().stream() //.filter(unit ->  (unit.getFernsteuerbarkeit() != null && unit.getFernsteuerbarkeit() == 1) || (unit.getNettonennleistung() != null && unit.getNettonennleistung() >= 100))
                                      .filter(unit -> unit.getStatus() == 35 && unit.getPostleitzahl() != null && unit.getOrt() != null)
                                      .collect(toSet());
                 allUnits.addAll(filteredUnits);
@@ -42,14 +43,14 @@ public class UnitParser {
             System.out.println("Number of units currently considered: " + allUnits.size());
 
             var unitsByLocation = allUnits.stream()
-                                          .collect(groupingBy(unit -> Pair.of(unit.getOrt(), unit.getPostleitzahl())));
+                                          .collect(groupingBy(unit -> Triple.of(unit.getOrt(), unit.getPostleitzahl(), unit.getInbetriebnahmedatum().getYear())));
             var clusters = unitsByLocation.values().stream().map(Cluster::new).collect(toSet());
-            System.out.println("Number of clusters (including single unit clusters): " + clusters.size());
-
+            var initialClusterNumber = clusters.size();
+            System.out.println("Number of clusters (including single unit clusters): " + initialClusterNumber);
 
             clusters = clusters.stream().filter(cluster -> cluster.getSize() > 1).collect(toSet());
 
-            System.out.println("Number of clusters (without single unit clusters): " + clusters.size());
+            System.out.println("Single unit clusters: " + (initialClusterNumber - clusters.size()));
 
             var clusterNumberByNetPower = clusters.stream()
                                                   .collect(collectingAndThen(groupingBy(c -> (c.getPower().intValue() / 100) * 100, Collectors.counting()), TreeMap::new));
@@ -57,15 +58,21 @@ public class UnitParser {
             var avgClusterActivePower = clusters.stream()
                                                 .map(Cluster::getPower)
                                                 .mapToDouble(Double::doubleValue)
-                                                .average()
-                                                .getAsDouble();
+                                                .average();
             System.out.println("Clusters by power: " + clusterNumberByNetPower);
-            System.out.println("Average cluster power: " + avgClusterActivePower);
-            System.out.println("Total power: " + (int) allUnits.stream().map(SolarUnit::getNettonennleistung).mapToDouble(Float::doubleValue).sum());
+            avgClusterActivePower.ifPresent(power -> System.out.println("Average cluster power: " + power));
 
-            writeToCSV(clusterNumberByNetPower);
+            var avgClusterSize = clusters.stream().map(Cluster::getSize)
+                                         .mapToDouble(Integer::doubleValue)
+                                         .average();
+            avgClusterSize.ifPresent(size -> System.out.println("Average cluster size: " + size));
 
-            jaxbObjectToXML(clusters);
+            System.out.println("Total power: " + (int) allUnits.stream().map(Unit::getNettonennleistung).mapToDouble(Float::doubleValue).sum());
+
+
+            // writeToCSV(clusterNumberByNetPower);
+
+            // jaxbObjectToXML(clusters);
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -87,10 +94,8 @@ public class UnitParser {
         }
     }
 
-    private static void jaxbObjectToXML(Set<Cluster> clusters)
-    {
-        try
-        {
+    private static void jaxbObjectToXML(Set<Cluster> clusters) {
+        try {
             //Create JAXB Context
             JAXBContext jaxbContext = JAXBContext.newInstance(Cluster.class, Clusters.class);
 
@@ -104,10 +109,7 @@ public class UnitParser {
             File file = new File("clusters.xml");
 
             jaxbMarshaller.marshal(new Clusters(clusters), file);
-
-        }
-        catch (JAXBException e)
-        {
+        } catch (JAXBException e) {
             e.printStackTrace();
         }
     }

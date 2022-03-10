@@ -1,6 +1,8 @@
 package de.ebal.mastr.parser;
 
-import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import lombok.Getter;
 
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.List;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Cluster {
 
-    private final List<SolarUnit> units;
+    private final List<Unit> units;
 
     @XmlElement
     private final Double avgPower;
@@ -27,11 +29,10 @@ public class Cluster {
         this.power = 0d;
     }
 
-    public Cluster(List<SolarUnit> units) {
+    public Cluster(List<Unit> units) {
         this.units = units;
-        this.power = units.stream().map(SolarUnit::getNettonennleistung).mapToDouble(Float::doubleValue).sum();
+        this.power = units.stream().map(Unit::getNettonennleistung).mapToDouble(Float::doubleValue).sum();
         this.size = units.size();
-        this.avgPower = this.power/this.size;
+        this.avgPower = this.power / this.size;
     }
-
 }

@@ -24,11 +24,11 @@ cim:GridOperatorsListEntry_manual_Shape
                                      sh:maxCount 1 ; ] ] ) .
 
 cim:ID_Shape
-    a          sh:PropertyShape ;
+    a                  sh:PropertyShape ;
     sh:targetObjectsOf cim:GridOperator.id ;
-    sh:targetObjectsOf cim:Supplier.id  ;
-    sh:pattern "^\\d+$" ;
-    sh:message "The ID needs to contain only digits (NDE or GS1 depending on codingScheme)" .
+    sh:targetObjectsOf cim:Supplier.id ;
+    sh:pattern         "^\\d+$" ;
+    sh:message         "The ID needs to contain only digits (NDE or GS1 depending on codingScheme)" .
 
 cim:GS1_ID_Shape
     a             sh:NodeShape ;
@@ -45,3 +45,11 @@ cim:GS1_ID_Shape
                             FILTER (STRLEN(?id) != 13) .
                         }
                           """ ] .
+
+cim:ControllableResourceClusterOrControlGroup_Shape
+    a              sh:NodeShape ;
+    sh:targetClass cim:ControllableResource ;
+    sh:property    [ sh:message  "A ControllableResource can only be part of a single ControlGroup or Cluster" ;
+                     sh:path     ( [ sh:zeroOrOnePath cim:ControllableResource.controlGroup ]
+                                   [ sh:zeroOrOnePath [ sh:inversePath cim:Cluster.controllableResource ] ] ) ;
+                     sh:maxCount 2 ] . # unit itself is always part of this path because zeroOrOne can be zero for both
